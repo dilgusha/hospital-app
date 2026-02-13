@@ -185,8 +185,9 @@ const slides = [
       }" class="h-125 md:h-162.5 lg:h-187.5 w-full">
       <swiper-slide v-for="(slide, index) in slides" :key="index">
         <div class="relative w-full h-full overflow-hidden bg-black">
-          <img :src="slide.image" :alt="slide.title"
-            class="absolute inset-0 w-full h-full object-cover transform scale-105 animate-slow-zoom" />
+          <!-- <img :src="slide.image" :alt="slide.title"
+            class="absolute inset-0 w-full h-full object-cover transform scale-105 animate-slow-zoom" /> -->
+          <img :src="slide.image" :alt="slide.title" class="absolute inset-0 w-full h-full object-cover hero-image" />
 
           <div class="absolute inset-0 bg-linear-to-r from-black/80 via-black/40 to-transparent"></div>
 
@@ -235,3 +236,31 @@ const slides = [
     </swiper>
   </section>
 </template>
+
+<style>
+.hero-image {
+  filter: blur(20px);
+  transform: scale(1.1);
+}
+
+.swiper-slide-active .hero-image {
+  animation: radialReveal 1.8s ease forwards;
+}
+
+@keyframes radialReveal {
+  0% {
+    filter: blur(20px);
+    clip-path: circle(0% at 50% 50%);
+  }
+
+  60% {
+    filter: blur(10px);
+  }
+
+  100% {
+    filter: blur(0px);
+    clip-path: circle(150% at 50% 50%);
+    transform: scale(1.05);
+  }
+}
+</style>
