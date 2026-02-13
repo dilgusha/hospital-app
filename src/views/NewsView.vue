@@ -3,7 +3,7 @@
 </template>
 
 <script setup>
-import NewsSection from '../components/cards/NewsSection.vue'
+import NewsSection from '../components/cards/BaseCard.vue'
 import { svgIcons } from '../assets/images/svg'
 
 const allNews = [

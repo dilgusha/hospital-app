@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
-import About from "../views/About.vue";
 import NewsSection from "../components/cards/NewsSection.vue";
 import NewsView from "../views/NewsView.vue";
+import About from "../components/home/About.vue";
 
 const routes=[
     {

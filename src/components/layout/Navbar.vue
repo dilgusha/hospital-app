@@ -1,115 +1,217 @@
-<script setup>
-import { ref } from 'vue';
-import { svgIcons } from '../../assets/images/svg';
+  <template>
+    <div class=" sticky top-0 z-100 transition-all duration-500 bg-white">
+      <div class="container mx-auto px-4 h-20 md:h-24 flex items-center justify-between">
 
-const menuItems = [
-  { name: 'Haqqımızda', path: '/about', subItems: ['Tariximiz', 'Rəhbərlik', 'Sertifikatlar'] },
-  { name: 'Həkimlər', path: '/doctors', subItems: ['Həkim siyahısı', 'Şöbələr'] },
-  { name: 'Bölmələrimiz', path: '/departments', subItems: ['Kardiologiya', 'Nevrologiya', 'Pediatriya'] },
-  { name: 'Tibbi Xidmətlər', path: '/medical-services', subItems: ['Kardiologiya', 'Nevrologiya', 'Pediatriya'] },
-];
-
-const isMobileMenuOpen = ref(false);
-const openSubMenu = ref(null);
-
-function toggleMobileMenu() {
-  isMobileMenuOpen.value = !isMobileMenuOpen.value;
-}
-
-function toggleSubMenu(index) {
-  openSubMenu.value = openSubMenu.value === index ? null : index;
-}
-</script>
-
-<template>
-  <header class="bg-white shadow-sm sticky top-0 z-50">
-    <div class="container mx-auto px-4 h-20 flex items-center justify-between">
-      <div v-html="svgIcons.logo"></div>
-
-      <nav class="hidden lg:flex items-center space-x-8 h-full">
-        <router-link to="/" class="text-gray-700 font-semibold hover:text-hospital-green transition-colors h-full flex items-center border-b-2 border-transparent hover:border-hospital-green" active-class="text-hospital-green border-hospital-green">
-          Əsas Səhifə
+        <router-link to="/" class="group flex items-center transition-transform duration-300 hover:scale-105">
+          <div class="relative">
+            <img src="../../assets/images/logo (1).png" alt="Referans Ambulance" class="h-12 md:h-16 object-contain" />
+            <div
+              class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#00A3C4] transition-all duration-300 group-hover:w-full">
+            </div>
+          </div>
         </router-link>
 
-        <div v-for="(item, index) in menuItems" :key="item.name" class="group relative h-full flex items-center">
-          <router-link :to="item.path" class="flex items-center text-gray-700 font-semibold hover:text-hospital-green transition-colors h-full border-b-2 border-transparent group-hover:border-hospital-green" active-class="text-hospital-green border-hospital-green font-bold">
-            {{ item.name }}
-            <span v-html="svgIcons.upperline"></span>
-          </router-link>
+        <nav class="hidden lg:flex items-center">
+          <div class="flex items-center space-x-1">
+            <!-- <router-link v-for="item in menuItems" :key="item.name" :to="item.path"
+              class="nav-item text-gray-600 font-semibold px-4 py-2 rounded-full transition-all duration-300 text-[14px] hover:text-[#00A3C4] hover:bg-blue-50">
+              {{ item.name }}
+            </router-link> -->
 
-          <div class="absolute top-[80px] left-0 hidden group-hover:block bg-white shadow-xl py-3 w-56 rounded-b-md border-t-2 border-hospital-green animate-fade-in">
-            <router-link v-for="sub in item.subItems" :key="sub" to="#" class="block px-6 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-hospital-green">
-              {{ sub }}
+            <a v-for="item in menuItems" :key="item.name" href="javascript:void(0)"
+              @click.prevent="scrollToSection(item.path)"
+              class="nav-item text-gray-600 font-semibold px-4 py-2 rounded-full transition-all duration-300 text-[14px] hover:text-[#00A3C4] hover:bg-blue-50 cursor-pointer">
+              {{ item.name }}
+            </a>
+          </div>
+
+          <div class="h-6 w-px bg-gray-200 mx-6"></div>
+
+          <div class="relative" ref="langDropdown">
+            <button @click.stop="isLangOpen = !isLangOpen"
+              class="flex items-center space-x-2 bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100 hover:border-[#00A3C4] transition-all group">
+              <img :src="languages[currentLang].flag" class="w-5 h-3.5 object-cover rounded-sm shadow-sm" />
+              <span class="text-gray-700 font-bold text-sm">{{ currentLang }}</span>
+              <i class="fas fa-chevron-down text-[10px] text-gray-400 transition-transform duration-300"
+                :class="{ 'rotate-180': isLangOpen }"></i>
+            </button>
+
+            <transition name="dropdown">
+              <div v-if="isLangOpen"
+                class="absolute right-0 mt-3 w-32 bg-white/90 backdrop-blur-xl shadow-2xl rounded-2xl border border-white/20 py-2 z-100 overflow-hidden">
+                <button v-for="(data, code) in languages" :key="code" @click="currentLang = code; isLangOpen = false"
+                  class="w-full flex items-center space-x-3 px-4 py-2.5 hover:bg-[#00A3C4]/10 transition-colors"
+                  :class="{ 'bg-blue-50': currentLang === code }">
+                  <img :src="data.flag" class="w-5 h-3.5 object-cover rounded-sm" />
+                  <span class="text-sm font-semibold text-gray-700">{{ data.name }}</span>
+                </button>
+              </div>
+            </transition>
+          </div>
+
+          <div class="flex items-center space-x-4 ml-8">
+            <router-link to="/signin"
+              class="text-[14px] font-bold text-gray-500 hover:text-[#00A3C4] transition-colors">
+              Daxil ol
+            </router-link>
+            <router-link to="/signup"
+              class="relative overflow-hidden group px-7 py-3 bg-[#00A3C4] text-white font-bold text-[14px] rounded-xl shadow-[0_10px_20px_-5px_rgba(0,163,196,0.3)] hover:shadow-[0_15px_25px_-5px_rgba(0,163,196,0.4)] transition-all duration-300 active:scale-95">
+              <span class="relative z-10">Qeydiyyat</span>
+              <div
+                class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+              </div>
             </router-link>
           </div>
-        </div>
+        </nav>
 
-        <router-link to="/check-up" class="text-gray-700 font-semibold hover:text-hospital-green transition-colors h-full flex items-center border-b-2 border-transparent hover:border-hospital-green" active-class="text-hospital-green border-hospital-green">
-          Check Up
-        </router-link>
-          <div class="flex items-center space-x-6">
-                <button class="text-hospital-green hover:scale-110 transition-transform"><svg class="h-5 w-5"
-                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                    </svg></button>
-                <button class="text-hospital-green hover:scale-110 transition-transform"><svg class="h-5 w-5"
-                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16" />
-                    </svg></button>
-                <button class="text-orange-500 hover:scale-110 transition-transform"><svg class="h-5 w-5" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
-                    </svg></button>
+        <!-- <div class="lg:hidden flex items-center">
+          <button @click="toggleMobileMenu"
+            class="w-11 h-11 flex items-center justify-center rounded-xl bg-gray-50 text-[#00A3C4] border border-gray-100 active:scale-90 transition-all">
+            <i :class="isMobileMenuOpen ? 'fas fa-times' : 'fas fa-bars-staggered'" class="text-xl"></i>
+          </button>
+        </div> -->
+        <div class="lg:hidden flex items-center relative z-[110]"> <button @click="toggleMobileMenu"
+            class="w-11 h-11 flex items-center justify-center rounded-xl bg-gray-50 text-[#00A3C4] border border-gray-100 active:scale-90 transition-all">
+            <i :class="isMobileMenuOpen ? 'fas fa-times' : 'fas fa-bars-staggered'" class="text-xl"></i>
+          </button>
+        </div>
+      </div>
+
+      <transition name="mobile-menu bg-white">
+        <div v-if="isMobileMenuOpen" class="fixed inset-0 bg-white z-105 lg:hidden flex flex-col pt-24 px-6">
+          <div class="flex flex-col space-y-2">
+            <a v-for="item in menuItems" :key="item.name" href="javascript:void(0)"
+              @click.prevent="scrollToSection(item.path)"
+              class="text-xl font-bold p-4 rounded-2xl hover:bg-gray-50 text-gray-800 hover:text-[#00A3C4] transition-all cursor-pointer">
+              {{ item.name }}
+            </a>
+          </div>
+
+          <div class="mt-auto pb-10">
+            <div class="grid grid-cols-2 gap-4 mb-8">
+              <router-link to="/signin" @click="isMobileMenuOpen = false"
+                class="flex items-center justify-center py-4 text-gray-500 font-bold rounded-2xl border-2 border-gray-100">
+                Daxil ol
+              </router-link>
+              <router-link to="/signup" @click="isMobileMenuOpen = false"
+                class="flex items-center justify-center py-4 bg-[#00A3C4] text-white font-bold rounded-2xl shadow-lg shadow-cyan-100">
+                Qeydiyyat
+              </router-link>
             </div>
-      </nav>
 
-      <div class="flex lg:hidden items-center space-x-4">
-        <button @click="toggleMobileMenu" class="text-hospital-green hover:scale-110 transition-transform">
-          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16" />
-          </svg>
-        </button>
-      </div>
-    </div>
-
-    <div v-if="isMobileMenuOpen" class="lg:hidden bg-white shadow-md border-t border-gray-200 animate-fade-in">
-      <router-link to="/" class="block px-4 py-3 text-gray-700 hover:text-hospital-green font-semibold border-b border-gray-100">Əsas Səhifə</router-link>
-
-      <div v-for="(item, index) in menuItems" :key="item.name" class="border-b border-gray-100">
-        <button @click="toggleSubMenu(index)" class="w-full text-left px-4 py-3 flex justify-between items-center text-gray-700 font-semibold hover:text-hospital-green">
-          {{ item.name }}
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform" :class="{'rotate-180': openSubMenu === index}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-          </svg>
-        </button>
-        <div v-if="openSubMenu === index" class="bg-gray-50">
-          <router-link v-for="sub in item.subItems" :key="sub" to="#" class="block px-6 py-2 text-gray-600 hover:text-hospital-green">
-            {{ sub }}
-          </router-link>
+            <div class="flex items-center justify-between p-4 bg-gray-50 rounded-2xl">
+              <div class="flex space-x-3">
+                <button v-for="(data, code) in languages" :key="code" @click="currentLang = code"
+                  class="p-2 rounded-lg transition-all border"
+                  :class="currentLang === code ? 'bg-white border-[#00A3C4] shadow-sm scale-110' : 'border-transparent opacity-50'">
+                  <img :src="data.flag" class="w-6 h-4 object-cover rounded-sm" />
+                </button>
+              </div>
+              <div class="flex space-x-4 text-[#00A3C4] text-lg">
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-whatsapp"></i>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-
-      <router-link to="/check-up" class="block px-4 py-3 text-gray-700 hover:text-hospital-green font-semibold border-b border-gray-100">Check Up</router-link>
+      </transition>
     </div>
-  </header>
-</template>
+  </template>
+
+<script setup>
+import { ref, onMounted, onUnmounted, watch } from 'vue';
+import { useRoute } from 'vue-router';
+
+const route = useRoute();
+const menuItems = [
+  { name: 'Haqqımızda', path: '#about' },
+  { name: 'Xidmətlər', path: '#services' },
+  { name: 'Üstünlük', path: '#advantages' },
+  { name: 'Həkimlərimiz', path: '#doctors' },
+  { name: 'Rəylər', path: '#reviews' },
+  { name: 'Əlaqə', path: '#contact' },
+];
+
+const languages = {
+  AZ: { name: 'AZ', flag: 'https://flagcdn.com/w20/az.png' },
+  RU: { name: 'RU', flag: 'https://flagcdn.com/w20/ru.png' },
+  EN: { name: 'EN', flag: 'https://flagcdn.com/w20/gb.png' }
+};
+
+const scrollToSection = (id) => {
+  const element = document.querySelector(id);
+  if (element) {
+    const offset = 80;
+    const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+
+    window.scrollTo({
+      top: elementPosition - offset,
+      behavior: 'smooth'
+    });
+
+    isMobileMenuOpen.value = false;
+  }
+};
+
+const currentLang = ref('AZ');
+const isLangOpen = ref(false);
+const isMobileMenuOpen = ref(false);
+const langDropdown = ref(null);
+
+const toggleMobileMenu = () => {
+  isMobileMenuOpen.value = !isMobileMenuOpen.value;
+};
+
+watch(() => route.path, () => {
+  isMobileMenuOpen.value = false;
+});
+
+watch(isMobileMenuOpen, (val) => {
+  document.body.style.overflow = val ? 'hidden' : '';
+});
+
+const handleClickOutside = (event) => {
+  if (langDropdown.value && !langDropdown.value.contains(event.target)) {
+    isLangOpen.value = false;
+  }
+};
+
+onMounted(() => document.addEventListener('click', handleClickOutside));
+onUnmounted(() => document.removeEventListener('click', handleClickOutside));
+</script>
 
 <style scoped>
-.animate-fade-in {
-  animation: fadeIn 0.3s ease-out;
+.header-glass {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.router-link-active.nav-item {
+  background: #00A3C4;
+  color: white !important;
+}
+
+.dropdown-enter-active,
+.dropdown-leave-active {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dropdown-enter-from,
+.dropdown-leave-to {
+  opacity: 0;
+  transform: translateY(10px) scale(0.95);
+}
+
+.mobile-menu-enter-active,
+.mobile-menu-leave-active {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-menu-enter-from,
+.mobile-menu-leave-to {
+  opacity: 0;
+  transform: translateY(-20px);
 }
 </style>
-

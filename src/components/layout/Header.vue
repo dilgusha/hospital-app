@@ -1,10 +1,15 @@
 <script setup lang="ts">
-import Navbar from './Navbar.vue';
 import TopHeader from './TopHeader.vue';
-
+import Navbar from './Navbar.vue';
 </script>
 
 <template>
-    <top-header />
-    <navbar />
+  <header class="sticky top-0 z-100 w-full shadow-sm">
+    <TopHeader />
+    <Navbar />
+  </header>
 </template>
+
+<style scoped>
+
+</style>

@@ -123,7 +123,7 @@ const services = [
 </template>
 
 <script setup>
-import NewsSection from '../cards/NewsSection.vue'
+import NewsSection from '../cards/BaseCard.vue'
 import { svgIcons } from '../../assets/images/svg'
 
 const allNews = [
