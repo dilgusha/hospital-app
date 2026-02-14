@@ -157,13 +157,13 @@ const getImageUrl = (name) => {
 
 const slides = [
   {
-    image: getImageUrl('7cbb22ab-8ec6-41e0-854c-cc051c762d05_33333333333.jpg'),
+    image: getImageUrl('slider1.jpg'),
     subtitle: '7/24 Təcili Tibbi Yardım',
     title: 'Həyatınız Bizim üçün Dəyərlidir',
     description: 'Ən müasir avadanlıqlarla təchiz olunmuş ambulanslarımızla saniyələr içində yanınızdayıq.'
   },
   {
-    image: getImageUrl('1cee3df7-cae5-4b1c-a054-ace0bd9af1d6_33333.jpg'),
+    image: getImageUrl('slider2.jpg'),
     subtitle: 'Beynəlxalq Təxliyə',
     title: 'Sərhəd Tanımayan Tibbi Xidmət',
     description: 'Hava və quru yolu ilə xəstələrin dünyanın istənilən nöqtəsinə təhlükəsiz daşınması.'
