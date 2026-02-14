@@ -59,11 +59,11 @@
           </div>
 
           <div class="flex items-center space-x-4 ml-8">
-            <router-link to="/signin"
+            <router-link to=""
               class="text-[14px] font-bold text-gray-500 hover:text-[#00A3C4] transition-colors">
               Daxil ol
             </router-link>
-            <router-link to="/signup"
+            <router-link to=""
               class="relative overflow-hidden group px-7 py-3 bg-[#00A3C4] text-white font-bold text-[14px] rounded-xl shadow-[0_10px_20px_-5px_rgba(0,163,196,0.3)] hover:shadow-[0_15px_25px_-5px_rgba(0,163,196,0.4)] transition-all duration-300 active:scale-95">
               <span class="relative z-10">Qeydiyyat</span>
               <div
@@ -105,11 +105,11 @@
 
           <div class="mt-auto pb-10">
             <div class="grid grid-cols-2 gap-4 mb-8">
-              <router-link to="/signin" @click="isMobileMenuOpen = false"
+              <router-link to="" @click="isMobileMenuOpen = false"
                 class="flex items-center justify-center py-4 text-gray-500 font-bold rounded-2xl border-2 border-gray-100">
                 Daxil ol
               </router-link>
-              <router-link to="/signup" @click="isMobileMenuOpen = false"
+              <router-link to="" @click="isMobileMenuOpen = false"
                 class="flex items-center justify-center py-4 bg-[#00A3C4] text-white font-bold rounded-2xl shadow-lg shadow-cyan-100">
                 Qeydiyyat
               </router-link>
