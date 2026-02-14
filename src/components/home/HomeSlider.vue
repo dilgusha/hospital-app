@@ -149,15 +149,16 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 
+
 const modules = [Navigation, Pagination, Autoplay, EffectFade];
 
 const getImageUrl = (name) => {
-  return new URL(`../../../public/${name}`, import.meta.url).href;
+  return new URL(`../../assets/images/${name}`, import.meta.url).href;
 };
 
 const slides = [
   {
-    image: getImageUrl('slider1.jpg'),
+    image: getImageUrl('slider1.webp'),
     subtitle: '7/24 Təcili Tibbi Yardım',
     title: 'Həyatınız Bizim üçün Dəyərlidir',
     description: 'Ən müasir avadanlıqlarla təchiz olunmuş ambulanslarımızla saniyələr içində yanınızdayıq.'
