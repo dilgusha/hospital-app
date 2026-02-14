@@ -15,7 +15,7 @@
           }" class="services-swiper">
           <swiper-slide v-for="(service, index) in servicesList" :key="index" class="slide-flex">
             <div
-              class="bg-white cursor-pointer p-8 md:p-10 rounded-[2.5rem] shadow-xl shadow-gray-200/50 border border-gray-50 flex flex-col md:flex-row gap-8 w-full h-full transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 group/card">
+              class="bg-white cursor-pointer active:cursor-grabbing p-8 md:p-10 rounded-[2.5rem] shadow-xl shadow-gray-200/50 border border-gray-50 flex flex-col md:flex-row gap-8 w-full h-full transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 group/card">
               <div class="shrink-0">
                 <div
                   class="w-20 h-20 rounded-2xl bg-linear-to-br from-[#00A3C4]/10 to-cyan-50 flex items-center justify-center transition-transform duration-500 group-hover/card:rotate-6">

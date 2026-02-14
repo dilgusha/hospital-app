@@ -30,7 +30,7 @@
         class="pb-10 "
       >
         <swiper-slide v-for="doctor in doctors" :key="doctor.id">
-          <div class="bg-white cursor-pointer rounded-2xl p-6 my-10 shadow-sm border border-gray-100 hover:shadow-xl transition-shadow duration-300 text-center group">
+          <div class="bg-white cursor-pointer active:cursor-grabbing rounded-2xl p-6 my-10 shadow-sm border border-gray-100 hover:shadow-xl transition-shadow duration-300 text-center group">
             <div class="relative w-32 h-32 mx-auto mb-6">
               <img :src="doctor.image" :alt="doctor.name" 
                 class="w-full h-full object-cover rounded-full border-4 border-gray-50  transition-colors" />

@@ -114,7 +114,7 @@ const doctors = [
       >
         <swiper-slide v-for="doctor in doctors" :key="doctor.id" v-slot="{ isActive }">
           <div :class="[
-            'rounded-2xl p-8 shadow-sm border transition-all duration-500 min-h-[320px] flex flex-col justify-between cursor-pointer',
+            'rounded-2xl p-8 shadow-sm border transition-all duration-500 min-h-[320px] flex flex-col justify-between cursor-pointer active:cursor-grabbing',
             isActive ? 'bg-[#00A3C4] text-white scale-105 shadow-xl border-transparent' : 'bg-white text-gray-600 border-gray-100'
           ]">
             

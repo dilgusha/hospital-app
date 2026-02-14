@@ -75,9 +75,13 @@
       </div>
 
       <div class="mt-16 pt-8 border-t border-white/10 text-center md:flex md:justify-between items-center">
-        <p class="text-[13px] opacity-70">
-          “Referans Ambulance” © 2026 Bütün hüquqlar qorunur.
-        </p>
+        <div class="flex justify-between items-center">
+          <p class="text-[13px] opacity-70 mr-4">
+            “Referans Ambulance” © 2026 Bütün hüquqlar qorunur.
+          </p>
+          <Footer200 />
+
+        </div>
         <div class="flex space-x-6 mt-4 md:mt-0 justify-center text-[12px] opacity-60">
           <a href="#" class="hover:text-white transition-colors">Gizlilik Siyasəti</a>
           <a href="#" class="hover:text-white transition-colors">Şərtlər və Qaydalar</a>
@@ -106,6 +110,8 @@
 </style>
 
 <script setup>
+import Footer200 from '../common/Footer-200.vue';
+
 
 const menuItems = [
   { name: 'Haqqımızda', path: '#about' },

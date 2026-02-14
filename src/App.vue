@@ -11,6 +11,8 @@ import Map from './components/home/Map.vue';
 import Doctors from './components/home/Doctors.vue';
 import BaseCard from './components/cards/BaseCard.vue';
 import Comments from './components/home/Comments.vue';
+import ScrollToTop from './components/common/ScrollToTop.vue';
+import FloatingPhone from './components/common/FloatingPhone.vue';
 
 </script>
 
@@ -25,4 +27,6 @@ import Comments from './components/home/Comments.vue';
   <Comments/>
   <Map />
   <Footer />
+  <FloatingPhone />
+  <ScrollToTop />
 </template>

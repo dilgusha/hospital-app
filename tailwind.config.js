@@ -14,3 +14,22 @@ export default {
   },
   plugins: [],
 }
+
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      animation: {
+        shimmer: 'shimmer 1.5s infinite linear',
+      },
+      keyframes: {
+        shimmer: {
+          '0%': { transform: 'translateX(-100%) skewX(-20deg)', opacity: '0' },
+          '50%': { opacity: '1' },
+          '100%': { transform: 'translateX(100%) skewX(-20deg)', opacity: '0' },
+        }
+      }
+    },
+  },
+  plugins: [],
+}

@@ -18,11 +18,20 @@
               {{ item.name }}
             </router-link> -->
 
-            <a v-for="item in menuItems" :key="item.name" href="javascript:void(0)"
+            <!-- <a v-for="item in menuItems" :key="item.name" href="javascript:void(0)"
               @click.prevent="scrollToSection(item.path)"
               class="nav-item text-gray-600 font-semibold px-4 py-2 rounded-full transition-all duration-300 text-[14px] hover:text-[#00A3C4] hover:bg-blue-50 cursor-pointer">
               {{ item.name }}
+            </a> -->
+            <a v-for="item in menuItems" :key="item.name" href="javascript:void(0)"
+              @click.prevent="scrollToSection(item.path)"
+              class="nav-item px-4 py-2 rounded-full font-semibold transition-all duration-300 text-[14px] cursor-pointer"
+              :class="activeSection === item.path
+                ? 'bg-[#00A3C4] text-white'
+                : 'text-gray-600 hover:text-[#00A3C4] hover:bg-blue-50'">
+              {{ item.name }}
             </a>
+
           </div>
 
           <div class="h-6 w-px bg-gray-200 mx-6"></div>
@@ -80,11 +89,18 @@
       <transition name="mobile-menu bg-white">
         <div v-if="isMobileMenuOpen" class="fixed inset-0 bg-white z-105 lg:hidden flex flex-col pt-24 px-6">
           <div class="flex flex-col space-y-2">
-            <a v-for="item in menuItems" :key="item.name" href="javascript:void(0)"
+            <!-- <a v-for="item in menuItems" :key="item.name" href="javascript:void(0)"
               @click.prevent="scrollToSection(item.path)"
               class="text-xl font-bold p-4 rounded-2xl hover:bg-gray-50 text-gray-800 hover:text-[#00A3C4] transition-all cursor-pointer">
               {{ item.name }}
+            </a> -->
+            <a v-for="item in menuItems" :key="item.name" @click.prevent="scrollToSection(item.path)"
+              class="text-xl font-bold p-4 rounded-2xl transition-all cursor-pointer " :class="activeSection === item.path
+                ? 'text-[#00A3C4] '
+                : 'text-gray-800 hover:bg-gray-50 hover:text-[#00A3C4]'">
+              {{ item.name }}
             </a>
+
           </div>
 
           <div class="mt-auto pb-10">
@@ -123,6 +139,27 @@ import { ref, onMounted, onUnmounted, watch } from 'vue';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
+const activeSection = ref('');
+
+const handleScroll = () => {
+  const scrollPosition = window.scrollY + 120;
+
+  for (const item of menuItems) {
+    const section = document.querySelector(item.path);
+    if (section) {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+
+      if (
+        scrollPosition >= sectionTop &&
+        scrollPosition < sectionTop + sectionHeight
+      ) {
+        activeSection.value = item.path;
+      }
+    }
+  }
+};
+
 const menuItems = [
   { name: 'Haqqımızda', path: '#about' },
   { name: 'Xidmətlər', path: '#services' },
@@ -178,6 +215,14 @@ const handleClickOutside = (event) => {
 
 onMounted(() => document.addEventListener('click', handleClickOutside));
 onUnmounted(() => document.removeEventListener('click', handleClickOutside));
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll);
+});
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll);
+});
+
 </script>
 
 <style scoped>
