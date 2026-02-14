@@ -187,7 +187,8 @@ const slides = [
         <div class="relative w-full h-full overflow-hidden ">
           <!-- <img :src="slide.image" :alt="slide.title"
             class="absolute inset-0 w-full h-full object-cover transform scale-105 animate-slow-zoom" /> -->
-          <img :src="slide.image" :alt="slide.title" class="absolute inset-0 w-full h-full object-cover hero-image" />
+          <img :src="slide.image" :alt="slide.title" class="absolute inset-0 w-full h-full object-cover hero-image"
+            fetchpriority="high" loading="eager" decoding="sync" />
 
           <div class="absolute inset-0 bg-linear-to-r to-transparent"></div>
 
