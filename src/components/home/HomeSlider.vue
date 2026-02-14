@@ -184,12 +184,12 @@ const slides = [
         prevEl: '.hero-prev'
       }" class="h-125 md:h-162.5 lg:h-187.5 w-full">
       <swiper-slide v-for="(slide, index) in slides" :key="index">
-        <div class="relative w-full h-full overflow-hidden bg-black">
+        <div class="relative w-full h-full overflow-hidden ">
           <!-- <img :src="slide.image" :alt="slide.title"
             class="absolute inset-0 w-full h-full object-cover transform scale-105 animate-slow-zoom" /> -->
           <img :src="slide.image" :alt="slide.title" class="absolute inset-0 w-full h-full object-cover hero-image" />
 
-          <div class="absolute inset-0 bg-linear-to-r from-black/80 via-black/40 to-transparent"></div>
+          <div class="absolute inset-0 bg-linear-to-r to-transparent"></div>
 
           <div class="container mx-auto px-4 h-full flex items-center relative z-10">
             <div class="max-w-2xl space-y-6">
@@ -239,22 +239,21 @@ const slides = [
 
 <style>
 .hero-image {
-  filter: blur(20px);
-  transform: scale(1.1);
+  filter: blur(0px);
+  transform: scale(1.05);
+  width: 100%;
+  height: 100%;
 }
 
 .swiper-slide-active .hero-image {
-  animation: radialReveal 1.8s ease forwards;
+  animation: radialReveal 1.8s ease-out forwards;
 }
 
 @keyframes radialReveal {
   0% {
-    filter: blur(20px);
+    filter: blur(30px);
     clip-path: circle(0% at 50% 50%);
-  }
-
-  60% {
-    filter: blur(10px);
+    transform: scale(1.2);
   }
 
   100% {
@@ -262,5 +261,9 @@ const slides = [
     clip-path: circle(150% at 50% 50%);
     transform: scale(1.05);
   }
+}
+
+.swiper-slide {
+  background-color: transparent !important;
 }
 </style>
