@@ -1,5 +1,5 @@
 <script setup>
-const phoneNumber = "*0003"; 
+const phoneNumber = "tel:*0003";
 </script>
 
 <template>
@@ -17,8 +17,8 @@ const phoneNumber = "*0003";
 <style scoped>
 @keyframes colorChange {
   0%, 100% {
-    background-color: #22c55e;
-    box-shadow: 0 0 20px rgba(34, 197, 94, 0.6);
+    background-color: #00A3C4;
+    box-shadow: 0 0 20px rgba(101, 195, 238, 0.6);
   }
   50% {
     background-color: #ef4444; 

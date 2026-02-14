@@ -189,6 +189,8 @@ const slides = [
             class="absolute inset-0 w-full h-full object-cover transform scale-105 animate-slow-zoom" /> -->
           <img :src="slide.image" :alt="slide.title" class="absolute inset-0 w-full h-full object-cover hero-image"
             :fetchpriority="index === 0 ? 'high' : 'auto'" :loading="index === 0 ? 'eager' : 'lazy'" decoding="sync" />
+          <!-- SOL TƏRƏF QARANLIQ OVERLAY -->
+          <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent z-0"></div>
 
           <div class="absolute inset-0 bg-linear-to-r to-transparent"></div>
 
@@ -241,7 +243,7 @@ const slides = [
 <style>
 .hero-image {
   filter: blur(2px);
-  transform: scale(1.05);   
+  transform: scale(1.05);
   width: 100%;
   height: 100%;
 }
@@ -256,6 +258,7 @@ const slides = [
     opacity: 0;
     transform: scale(1.1);
   }
+
   100% {
     opacity: 1;
     transform: scale(1.05);
