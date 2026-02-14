@@ -152,7 +152,7 @@ import 'swiper/css/effect-fade';
 const modules = [Navigation, Pagination, Autoplay, EffectFade];
 
 const getImageUrl = (name) => {
-  return new URL(`../../assets/images/${name}`, import.meta.url).href;
+  return new URL(`../../../public/${name}`, import.meta.url).href;
 };
 
 const slides = [
@@ -188,7 +188,7 @@ const slides = [
           <!-- <img :src="slide.image" :alt="slide.title"
             class="absolute inset-0 w-full h-full object-cover transform scale-105 animate-slow-zoom" /> -->
           <img :src="slide.image" :alt="slide.title" class="absolute inset-0 w-full h-full object-cover hero-image"
-            fetchpriority="high" loading="eager" decoding="sync" />
+            :fetchpriority="index === 0 ? 'high' : 'auto'" :loading="index === 0 ? 'eager' : 'lazy'" decoding="sync" />
 
           <div class="absolute inset-0 bg-linear-to-r to-transparent"></div>
 
@@ -240,8 +240,8 @@ const slides = [
 
 <style>
 .hero-image {
-  filter: blur(0px);
-  transform: scale(1.05);
+  filter: blur(2px);
+  transform: scale(1.05);   
   width: 100%;
   height: 100%;
 }
@@ -250,7 +250,19 @@ const slides = [
   animation: radialReveal 1.8s ease-out forwards;
 }
 
+
 @keyframes radialReveal {
+  0% {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+/* @keyframes radialReveal {
   0% {
     filter: blur(30px);
     clip-path: circle(0% at 50% 50%);
@@ -262,7 +274,7 @@ const slides = [
     clip-path: circle(150% at 50% 50%);
     transform: scale(1.05);
   }
-}
+} */
 
 .swiper-slide {
   background-color: transparent !important;
