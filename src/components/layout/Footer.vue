@@ -2,7 +2,6 @@
   <footer class="bg-[#00A3C4] text-white pt-16 pb-8 relative overflow-hidden">
     <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl">
     </div>
-
     <div class="container mx-auto px-4 relative z-10">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 items-start">
 
@@ -73,14 +72,12 @@
           </div>
         </div>
       </div>
-
       <!-- <div class="mt-16 pt-8 border-t border-white/10 text-center md:flex md:justify-between items-center">
         <div class="lg:flex justify-between items-center flex-wrap">
           <p class="text-[13px] opacity-70 mr-4">
             “Referans Ambulance” © 2026 Bütün hüquqlar qorunur.
           </p>
           <Footer200 />
-
         </div>
         <div class="flex space-x-6 mt-4 md:mt-0 justify-center text-[12px] opacity-60">
           <a href="#" class="hover:text-white transition-colors">Gizlilik Siyasəti</a>
