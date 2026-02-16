@@ -110,12 +110,6 @@
 </template>
 <script setup>
 import azUpper from '../../utils/font.js';
-// const azUpper = (text) => {
-//   return text
-//     .replace(/i/g, 'İ')
-//     .replace(/ı/g, 'I')
-//     .toUpperCase();
-// };
 
 </script>
 
