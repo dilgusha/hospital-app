@@ -35,11 +35,6 @@
                     {{ service.description }}
                   </p>
                 </div>
-
-                <div
-                  class="pt-2 flex items-center text-[#00A3C4] font-bold text-sm uppercase tracking-wider gap-2 opacity-0 group-hover/card:opacity-100 transition-all">
-                  Ətraflı <i class="fas fa-chevron-right text-[10px]"></i>
-                </div>
               </div>
             </div>
           </swiper-slide>

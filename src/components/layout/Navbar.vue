@@ -12,17 +12,7 @@
         </router-link>
 
         <nav class="hidden lg:flex items-center">
-          <div class="flex items-center space-x-1">
-            <!-- <router-link v-for="item in menuItems" :key="item.name" :to="item.path"
-              class="nav-item text-gray-600 font-semibold px-4 py-2 rounded-full transition-all duration-300 text-[14px] hover:text-[#00A3C4] hover:bg-blue-50">
-              {{ item.name }}
-            </router-link> -->
-
-            <!-- <a v-for="item in menuItems" :key="item.name" href="javascript:void(0)"
-              @click.prevent="scrollToSection(item.path)"
-              class="nav-item text-gray-600 font-semibold px-4 py-2 rounded-full transition-all duration-300 text-[14px] hover:text-[#00A3C4] hover:bg-blue-50 cursor-pointer">
-              {{ item.name }}
-            </a> -->
+          <!-- <div class="flex items-center space-x-1">
             <a v-for="item in menuItems" :key="item.name" href="javascript:void(0)"
               @click.prevent="scrollToSection(item.path)"
               class="nav-item px-4 py-2 rounded-full font-semibold transition-all duration-300 text-[14px] cursor-pointer"
@@ -32,6 +22,79 @@
               {{ item.name }}
             </a>
 
+          </div> -->
+          <div class="relative">
+            <div
+              class="absolute top-0 h-full bg-gradient-to-r from-[#00A3C4]/8 to-[#0077B6]/8 rounded-2xl transition-all duration-500 ease-out border border-[#00A3C4]/20"
+              :style="{
+                left: indicatorLeft + 'px',
+                width: indicatorWidth + 'px'
+              }"></div>
+
+            <ul class="flex items-center space-x-1 relative z-10">
+              <li v-for="(item, index) in menuItems" :key="index" :ref="el => menuRefs[index] = el" class="relative">
+                <div v-if="isMoving && targetIdx === index"
+                  class="absolute top-1/2 -translate-y-1/2 pointer-events-none transition-all duration-700 ease-out z-30"
+                  :class="[
+                    movingDirection === 'right' ? 'animate-drive-in-right' : 'animate-drive-in-left'
+                  ]" :style="{
+                    [movingDirection === 'right' ? 'left' : 'right']: ambulanceOffset + 'px'
+                  }">
+                  <div class="relative flex items-center">
+                    <div v-if="movingDirection === 'right'" class="absolute -left-10 flex flex-col space-y-1">
+                      <div class="w-6 h-0.5 bg-[#00A3C4]/50 rounded animate-speed-trail"></div>
+                      <div class="w-4 h-0.5 bg-[#00A3C4]/30 rounded animate-speed-trail delay-75"></div>
+                      <div class="w-3 h-0.5 bg-[#00A3C4]/20 rounded animate-speed-trail delay-150"></div>
+                    </div>
+                    <div v-else class="absolute -right-10 flex flex-col space-y-1">
+                      <div class="w-6 h-0.5 bg-[#00A3C4]/50 rounded animate-speed-trail"></div>
+                      <div class="w-4 h-0.5 bg-[#00A3C4]/30 rounded animate-speed-trail delay-75"></div>
+                      <div class="w-3 h-0.5 bg-[#00A3C4]/20 rounded animate-speed-trail delay-150"></div>
+                    </div>
+
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 flex space-x-1.5 z-10">
+                      <div
+                        class="w-1.5 h-1.5 bg-red-500 rounded-full animate-siren shadow-[0_0_12px_rgba(239,68,68,0.9)]">
+                      </div>
+                      <div
+                        class="w-1.5 h-1.5 bg-blue-500 rounded-full animate-siren-alt shadow-[0_0_12px_rgba(59,130,246,0.9)]">
+                      </div>
+                    </div>
+
+                    <div class="relative px-2" :class="movingDirection === 'right' ? '' : 'scale-x-[-1]'">
+                      <i class="fas fa-ambulance text-[#00A3C4] text-2xl drop-shadow-xl filter brightness-110"></i>
+                    </div>
+
+                    <div class="absolute bottom-0 flex space-x-1"
+                      :class="movingDirection === 'right' ? '-left-6' : '-right-6'">
+                      <div class="w-2 h-2 bg-gray-300/40 rounded-full animate-dust-cloud"></div>
+                      <div class="w-1.5 h-1.5 bg-gray-300/30 rounded-full animate-dust-cloud delay-100"></div>
+                      <div class="w-1 h-1 bg-gray-300/20 rounded-full animate-dust-cloud delay-200"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- <a href="#" @click.prevent="setActive(index)"
+                  class="relative px-6 py-3 text-sm font-bold uppercase tracking-wide transition-all duration-300 rounded-2xl block group"
+                  :class="activeIdx === index
+                    ? 'text-[#00A3C4]'
+                    : 'text-gray-600 hover:text-[#2d3142]'"> -->
+                <a :href="item.path" @click="setActive(index)"
+                  class="relative px-6 py-3 text-sm font-bold uppercase tracking-wide transition-all duration-300 rounded-2xl block group"
+                  :class="activeIdx === index
+                    ? 'text-[#00A3C4]'
+                    : 'text-gray-600 hover:text-[#2d3142]'">
+                  <span class="relative inline-block transition-all duration-300"
+                    :class="isMoving && targetIdx === index ? 'opacity-40 blur-[0.5px]' : 'opacity-100'">
+                    {{ item.name }}
+                  </span>
+
+                  <span
+                    class="absolute bottom-1.5 left-1/2 -translate-x-1/2 h-0.5 bg-gradient-to-r from-[#00A3C4] to-[#0077B6] rounded-full transition-all duration-300"
+                    :class="activeIdx === index ? 'w-10' : 'w-0 group-hover:w-8 group-hover:bg-gray-400'"></span>
+                </a>
+              </li>
+            </ul>
           </div>
 
           <div class="h-6 w-px bg-gray-200 mx-6"></div>
@@ -59,11 +122,10 @@
           </div>
 
           <div class="flex items-center space-x-4 ml-8">
-            <router-link to=""
-              class="text-[14px] font-bold text-gray-500 hover:text-[#00A3C4] transition-colors">
+            <router-link to="/login" class="text-[14px] font-bold text-gray-500 hover:text-[#00A3C4] transition-colors">
               Daxil ol
             </router-link>
-            <router-link to=""
+            <router-link to="/register"
               class="relative overflow-hidden group px-7 py-3 bg-[#00A3C4] text-white font-bold text-[14px] rounded-xl shadow-[0_10px_20px_-5px_rgba(0,163,196,0.3)] hover:shadow-[0_15px_25px_-5px_rgba(0,163,196,0.4)] transition-all duration-300 active:scale-95">
               <span class="relative z-10">Qeydiyyat</span>
               <div
@@ -223,9 +285,219 @@ onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll);
 });
 
+
+
+
+const activeIdx = ref(0);
+const indicatorLeft = ref(0);
+const indicatorWidth = ref(0);
+const ambulanceOffset = ref(-50);
+const targetIdx = ref(0);
+const menuRefs = ref([]);
+const isMoving = ref(false);
+const movingDirection = ref('right');
+
+const setActive = (index) => {
+  if (activeIdx.value === index) return;
+
+  movingDirection.value = index > activeIdx.value ? 'right' : 'left';
+  targetIdx.value = index;
+  isMoving.value = true;
+
+  const targetEl = menuRefs.value[index];
+  if (targetEl) {
+    indicatorLeft.value = targetEl.offsetLeft;
+    indicatorWidth.value = targetEl.offsetWidth;
+  }
+
+  ambulanceOffset.value = -50;
+  const animationInterval = setInterval(() => {
+    ambulanceOffset.value += 2;
+    if (ambulanceOffset.value >= 50) {
+      clearInterval(animationInterval);
+      activeIdx.value = index;
+
+      setTimeout(() => {
+        isMoving.value = false;
+        ambulanceOffset.value = -50;
+      }, 100);
+    }
+  }, 10);
+};
+
+onMounted(() => {
+  setTimeout(() => {
+    if (menuRefs.value[0]) {
+      const firstEl = menuRefs.value[0];
+      indicatorLeft.value = firstEl.offsetLeft;
+      indicatorWidth.value = firstEl.offsetWidth;
+    }
+  }, 100);
+});
+
 </script>
 
 <style scoped>
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+.transition-all {
+  transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes siren {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+
+  50% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+}
+
+@keyframes siren-alt {
+
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.animate-siren {
+  animation: siren 0.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-siren-alt {
+  animation: siren-alt 0.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes speed-trail {
+  0% {
+    opacity: 0;
+    width: 0;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+
+  100% {
+    opacity: 0;
+    width: 100%;
+  }
+}
+
+.animate-speed-trail {
+  animation: speed-trail 0.4s ease-out infinite;
+}
+
+@keyframes dust-cloud {
+  0% {
+    opacity: 0.6;
+    transform: scale(1) translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(2) translateY(4px);
+  }
+}
+
+.animate-dust-cloud {
+  animation: dust-cloud 0.5s ease-out infinite;
+}
+
+@keyframes drive-in-right {
+  0% {
+    transform: translateX(-100px) translateY(-50%) rotate(-3deg);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(100px) translateY(-50%) rotate(3deg);
+    opacity: 0;
+  }
+}
+
+@keyframes drive-in-left {
+  0% {
+    transform: translateX(100px) translateY(-50%) rotate(3deg);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(-100px) translateY(-50%) rotate(-3deg);
+    opacity: 0;
+  }
+}
+
+.animate-drive-in-right {
+  animation: drive-in-right 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.animate-drive-in-left {
+  animation: drive-in-left 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Delay classes */
+.delay-75 {
+  animation-delay: 0.1s;
+}
+
+.delay-100 {
+  animation-delay: 0.15s;
+}
+
+.delay-150 {
+  animation-delay: 0.2s;
+}
+
+.delay-200 {
+  animation-delay: 0.25s;
+}
+
+nav {
+  backdrop-filter: saturate(180%) blur(20px);
+}
+
+@keyframes ping {
+
+  75%,
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.animate-ping {
+  animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
 .header-glass {
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(12px);

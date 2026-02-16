@@ -79,7 +79,6 @@ const services = [
                     </div>
 
                     <div class="flex items-center justify-between mt-4">
-                        <span class="text-xs font-bold uppercase tracking-widest text-gray-400 group-hover:text-[#6BB52B]">Ətraflı oxu</span>
                         <div class="w-10 h-10 rounded-full border border-gray-100 flex items-center justify-center transition-all duration-300 group-hover:bg-[#6BB52B] group-hover:border-[#6BB52B]">
                             <svg class="w-4 h-4 text-[#6BB52B] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7M3 12h18" />
