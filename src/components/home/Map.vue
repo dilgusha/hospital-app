@@ -1,5 +1,5 @@
 <template>
-  <section class="py-16 bg-gray-50" id="contact">
+  <section class="py-20 md:py-28 bg-gray-50" id="contact">
     <div class="container mx-auto px-4">
       <h2 class="text-[#00A3C4] font-bold text-3xl mb-8">Xəritədə Bax</h2>
       <div class="flex flex-wrap gap-3 mb-6">
@@ -47,10 +47,10 @@
 
           <form @submit.prevent="handleSubmit" class="space-y-4">
             <div class="grid grid-cols-2 gap-4">
-              <input type="text" placeholder="Ad*"
+              <input type="text" placeholder="Ad*" v-model="form.firstName"
                 class="w-full p-4 border border-gray-200 rounded-lg focus:outline-none focus:border-[#00A3C4] transition-colors bg-gray-50"
                 required>
-              <input type="text" placeholder="Soyad*"
+              <input type="text" placeholder="Soyad*" v-model="form.lastName"
                 class="w-full p-4 border border-gray-200 rounded-lg focus:outline-none focus:border-[#00A3C4] transition-colors bg-gray-50"
                 required>
             </div>
@@ -58,7 +58,7 @@
             <div class="relative">
               <div class="absolute inset-y-0 left-0 flex items-center pl-4">
                 <div class="relative flex items-center h-full">
-                  <select
+                  <select v-model="form.prefix"
                     class="appearance-none bg-transparent text-gray-700 pr-7 mr-3 border-r border-gray-300 outline-none cursor-pointer h-[60%] leading-tight">
                     <option value="050">050</option>
                     <option value="051" selected>051</option>
@@ -74,12 +74,12 @@
                 </div>
               </div>
 
-              <input type="tel" placeholder="XXX-XX-XX"
+              <input type="tel" placeholder="XXX-XX-XX" v-model="form.phone"
                 class="w-full p-4 pl-24 border border-gray-200 rounded-lg focus:outline-none focus:border-[#00A3C4] transition-colors bg-gray-50"
                 required>
             </div>
 
-            <textarea placeholder="Mesajınız*" rows="4"
+            <textarea placeholder="Mesajınız*" rows="4" v-model="form.message"
               class="w-full p-4 border border-gray-200 rounded-lg focus:outline-none focus:border-[#00A3C4] transition-colors bg-gray-50 resize-none"
               required></textarea>
 
@@ -117,8 +117,25 @@ const branches = [
 
 const activeBranch = ref(branches[0]);
 
+const form = ref({
+  firstName: '',
+  lastName: '',
+  prefix: '050',
+  phone: '',
+  message: ''
+});
 const handleSubmit = () => {
+  console.log('Göndərilən məlumat:', form.value);
+
   alert('Mesajınız uğurla göndərildi!');
+
+  form.value = {
+    firstName: '',
+    lastName: '',
+    prefix: '051',
+    phone: '',
+    message: ''
+  };
 };
 </script>
 

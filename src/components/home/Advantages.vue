@@ -1,5 +1,5 @@
 <template>
-  <section id="advantages" class="py-20 bg-white">
+  <section id="advantages" class="py-20 md:py-28 bg-white">
     <div class="container mx-auto px-4">
       <div class="mb-16 text-left">
         <h2 class="text-4xl font-black text-[#2d3142] mb-2">Üstünlüklərimiz</h2>

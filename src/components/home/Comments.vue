@@ -76,7 +76,7 @@ const doctors = [
 </style> -->
 
 <template>
-  <section id="reviews" class="py-16 bg-gray-50 overflow-hidden">
+  <section id="reviews" class="py-20 md:py-28 bg-gray-50 overflow-hidden">
     <div class="container mx-auto px-4">
       <div class="flex items-center justify-between mb-10">
         <div>

@@ -1,15 +1,15 @@
   <template>
     <div class=" sticky top-0 z-100 transition-all duration-500 bg-white">
       <div class="container mx-auto px-4 h-20 md:h-24 flex items-center justify-between">
-
-        <router-link to="/" class="group flex items-center transition-transform duration-300 hover:scale-105">
+        <a href="#" class="group flex items-center transition-transform duration-300 hover:scale-105"
+          @click.prevent="scrollToSection('#')">
           <div class="relative">
             <img src="../../assets/images/logo (1).png" alt="Referans Ambulance" class="h-12 md:h-16 object-contain" />
             <div
               class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#00A3C4] transition-all duration-300 group-hover:w-full">
             </div>
           </div>
-        </router-link>
+        </a>
 
         <nav class="hidden lg:flex items-center">
           <!-- <div class="flex items-center space-x-1">
@@ -51,7 +51,6 @@
                       <div class="w-4 h-0.5 bg-[#00A3C4]/30 rounded animate-speed-trail delay-75"></div>
                       <div class="w-3 h-0.5 bg-[#00A3C4]/20 rounded animate-speed-trail delay-150"></div>
                     </div>
-
                     <div class="absolute -top-4 left-1/2 -translate-x-1/2 flex space-x-1.5 z-10">
                       <div
                         class="w-1.5 h-1.5 bg-red-500 rounded-full animate-siren shadow-[0_0_12px_rgba(239,68,68,0.9)]">
@@ -60,7 +59,6 @@
                         class="w-1.5 h-1.5 bg-blue-500 rounded-full animate-siren-alt shadow-[0_0_12px_rgba(59,130,246,0.9)]">
                       </div>
                     </div>
-
                     <div class="relative px-2" :class="movingDirection === 'right' ? '' : 'scale-x-[-1]'">
                       <i class="fas fa-ambulance text-[#00A3C4] text-2xl drop-shadow-xl filter brightness-110"></i>
                     </div>
@@ -79,7 +77,7 @@
                   :class="activeIdx === index
                     ? 'text-[#00A3C4]'
                     : 'text-gray-600 hover:text-[#2d3142]'"> -->
-                <a :href="item.path" @click="setActive(index)"
+                <a :href="item.path" @click="setActive(index)" @click.prevent="scrollToSection(item.path, index)"
                   class="relative px-6 py-3 text-sm font-bold uppercase tracking-wide transition-all duration-300 rounded-2xl block group"
                   :class="activeIdx === index
                     ? 'text-[#00A3C4]'
@@ -162,21 +160,18 @@
                 : 'text-gray-800 hover:bg-gray-50 hover:text-[#00A3C4]'">
               {{ item.name }}
             </a>
-
           </div>
-
           <div class="mt-auto pb-10">
             <div class="grid grid-cols-2 gap-4 mb-8">
-              <router-link to="" @click="isMobileMenuOpen = false"
+              <router-link to="/login" @click="isMobileMenuOpen = false"
                 class="flex items-center justify-center py-4 text-gray-500 font-bold rounded-2xl border-2 border-gray-100">
                 Daxil ol
               </router-link>
-              <router-link to="" @click="isMobileMenuOpen = false"
+              <router-link to="/register" @click="isMobileMenuOpen = false"
                 class="flex items-center justify-center py-4 bg-[#00A3C4] text-white font-bold rounded-2xl shadow-lg shadow-cyan-100">
                 Qeydiyyat
               </router-link>
             </div>
-
             <div class="flex items-center justify-between p-4 bg-gray-50 rounded-2xl">
               <div class="flex space-x-3">
                 <button v-for="(data, code) in languages" :key="code" @click="currentLang = code"
