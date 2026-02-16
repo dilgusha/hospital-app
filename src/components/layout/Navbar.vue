@@ -73,10 +73,6 @@
                     :class="isMoving && targetIdx === index ? 'opacity-40 blur-[0.5px]' : 'opacity-100'">
                     {{ azUpper(item.name) }}
                   </span>
-
-                  <span
-                    class="absolute bottom-1.5 left-1/2 -translate-x-1/2 h-0.5 bg-gradient-to-r from-[#00A3C4] to-[#0077B6] rounded-full transition-all duration-300"
-                    :class="activeIdx === index ? 'w-10' : 'w-0 group-hover:w-8 group-hover:bg-gray-400'"></span>
                 </a>
               </li>
             </ul>
@@ -125,18 +121,30 @@
         </div>
       </div>
 
-      <transition name="mobile-menu bg-white">
-        <div v-if="isMobileMenuOpen" class="fixed inset-0 bg-white z-105 lg:hidden flex flex-col pt-24 px-6">
+      <transition name="mobile-menu">
+        <div v-if="isMobileMenuOpen" class="fixed inset-0 bg-white z-[1000] lg:hidden flex flex-col pt-24 px-6">
           <div class="flex flex-col space-y-2">
-            <a v-for="item in menuItems" :key="item.name" @click.prevent="scrollToSection(item.path)"
+            <!-- <a v-for="item in menuItems" :key="item.name"
+              @click.prevent="() => { scrollToSection(item.path); isMobileMenuOpen.value = false; }"
+              class="text-xl font-bold p-4 rounded-2xl transition-all cursor-pointer"
+              :class="activeSection === item.path ? 'text-[#00A3C4]' : 'text-gray-800 hover:bg-gray-50 hover:text-[#00A3C4]'">
+              {{ item.name }}
+            </a> -->
+            <a v-for="item in menuItems" :key="item.name" @click.prevent="mobileScrollTo(item.path)"
+              class="text-xl font-bold p-4 rounded-2xl transition-all cursor-pointer"
+              :class="activeSection === item.path ? 'text-[#00A3C4]' : 'text-gray-800 hover:bg-gray-50 hover:text-[#00A3C4]'">
+              {{ item.name }}
+            </a>
+
+            <!-- <a v-for="item in menuItems" :key="item.name" @click.prevent="scrollToSection(item.path)"
               class="text-xl font-bold p-4 rounded-2xl transition-all cursor-pointer " :class="activeSection === item.path
                 ? 'text-[#00A3C4] '
                 : 'text-gray-800 hover:bg-gray-50 hover:text-[#00A3C4]'">
               {{ item.name }}
-            </a>
+            </a> -->
           </div>
           <div class="mt-auto pb-10">
-            <div class="grid grid-cols-2 gap-4 mb-8">
+            <!-- <div class="grid grid-cols-2 gap-4 mb-8">
               <router-link to="/login" @click="isMobileMenuOpen = false"
                 class="flex items-center justify-center py-4 text-gray-500 font-bold rounded-2xl border-2 border-gray-100">
                 Daxil ol
@@ -145,7 +153,7 @@
                 class="flex items-center justify-center py-4 bg-[#00A3C4] text-white font-bold rounded-2xl shadow-lg shadow-cyan-100">
                 Qeydiyyat
               </router-link>
-            </div>
+            </div> -->
             <div class="flex items-center justify-between p-4 bg-gray-50 rounded-2xl">
               <div class="flex space-x-3">
                 <button v-for="(data, code) in languages" :key="code" @click="currentLang = code"
@@ -169,36 +177,85 @@
 import { ref, onMounted, onUnmounted, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import azUpper from '../../utils/font.js';
+import { throttle } from 'lodash';
 
 const route = useRoute();
 const activeSection = ref('');
 
+const throttledScroll = throttle(() => {
+  handleScroll();
+}, 100);
+onMounted(() => window.addEventListener('scroll', throttledScroll));
+onUnmounted(() => window.removeEventListener('scroll', throttledScroll));
+
+// const handleScroll = () => {
+//   const scrollPosition = window.scrollY + 150;
+
+//   if (window.scrollY < 150) {
+//     activeSection.value = '';
+//     activeIdx.value = -1;
+//     indicatorWidth.value = 0;
+//     return;
+//   }
+
+//   for (let index = 0; index < menuItems.length; index++) {
+//     const item = menuItems[index];
+//     const section = document.querySelector(item.path);
+//     if (!section) continue;
+
+//     const sectionTop = section.offsetTop;
+//     const sectionHeight = section.offsetHeight;
+
+//     if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+//       if (activeIdx.value !== index) {
+//         activeSection.value = item.path;
+//         const targetEl = menuRefs.value[index];
+//         if (targetEl) {
+//           indicatorLeft.value = targetEl.offsetLeft;
+//           indicatorWidth.value = targetEl.offsetWidth;
+//         }
+//         activeIdx.value = index;
+//       }
+//       break;
+//     }
+//   }
+// };
+
 const handleScroll = () => {
+  if (isMobileMenuOpen.value) return; // mobil menyuda scroll ignore edilir
+
   const scrollPosition = window.scrollY + 150;
 
-  menuItems.forEach((item, index) => {
-    if (window.scrollY < 150) {
-      activeSection.value = '';
-      activeIdx.value = -1;
-      indicatorWidth.value = 0;
-      return;
-    }
+  if (window.scrollY < 150) {
+    activeSection.value = '';
+    activeIdx.value = -1;
+    indicatorWidth.value = 0;
+    return;
+  }
+
+  for (let index = 0; index < menuItems.length; index++) {
+    const item = menuItems[index];
     const section = document.querySelector(item.path);
-    if (section) {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.offsetHeight;
+    if (!section) continue;
 
-      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.offsetHeight;
+
+    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+      if (activeIdx.value !== index) {
         activeSection.value = item.path;
-
-        if (!isMoving.value) {
-          updateIndicator(index);
-          activeIdx.value = index;
+        const targetEl = menuRefs.value[index];
+        if (targetEl) {
+          indicatorLeft.value = targetEl.offsetLeft;
+          indicatorWidth.value = targetEl.offsetWidth;
         }
+        activeIdx.value = index;
       }
+      break;
     }
-  });
+  }
 };
+
 const updateIndicator = (index) => {
   const targetEl = menuRefs.value[index];
   if (targetEl) {
@@ -222,32 +279,40 @@ const languages = {
   EN: { name: 'EN', flag: 'https://flagcdn.com/w20/gb.png' }
 };
 
+const mobileScrollTo = (id) => {
+  isMobileMenuOpen.value = false; // Menyunu bağla
+  
+  // Bir az gecikmə qoyuruq ki, menyu bağlanma animasiyası ilə skrol toqquşmasın
+  setTimeout(() => {
+    const element = document.querySelector(id);
+    if (element) {
+      const offset = 80;
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({
+        top: elementPosition - offset,
+        behavior: 'smooth'
+      });
+      activeSection.value = id;
+    }
+  }, 300);
+};
+
 const scrollToSection = (id, index) => {
   if (index !== undefined) {
     setActive(index);
-  }
-
-  if (id === '#') {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    activeSection.value = '';
-    activeIdx.value = 0;
-    return;
-  }
-
-  const element = document.querySelector(id);
-  if (element) {
-    const offset = 90;
-    const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-
-    window.scrollTo({
-      top: elementPosition - offset,
-      behavior: 'smooth'
-    });
-
-    activeSection.value = id;
-    isMobileMenuOpen.value = false;
+    activeSection.value = menuItems[index].path;
+    if (id !== '#') {
+      const element = document.querySelector(id);
+      if (element) {
+        const offset = 90;
+        window.scrollTo(0, element.offsetTop - offset);
+      }
+    } else {
+      window.scrollTo(0, 0);
+    }
   }
 };
+
 const currentLang = ref('AZ');
 const isLangOpen = ref(false);
 const isMobileMenuOpen = ref(false);
@@ -305,10 +370,13 @@ const menuRefs = ref([]);
 const isMoving = ref(false);
 const movingDirection = ref('right');
 
-const setActive = (index) => {
-  if (activeIdx.value === index) return;
 
-  movingDirection.value = index > activeIdx.value ? 'right' : 'left';
+const setActive = (index) => {
+  if (activeIdx.value === index || isMoving.value) return;
+
+  const prevIndex = activeIdx.value === -1 ? 0 : activeIdx.value;
+  movingDirection.value = index > prevIndex ? 'right' : 'left';
+
   targetIdx.value = index;
   isMoving.value = true;
 
@@ -319,8 +387,10 @@ const setActive = (index) => {
   }
 
   ambulanceOffset.value = -50;
+
   const animationInterval = setInterval(() => {
     ambulanceOffset.value += 2;
+
     if (ambulanceOffset.value >= 50) {
       clearInterval(animationInterval);
       activeIdx.value = index;
@@ -332,6 +402,7 @@ const setActive = (index) => {
     }
   }, 10);
 };
+
 
 onMounted(() => {
   setTimeout(() => {
