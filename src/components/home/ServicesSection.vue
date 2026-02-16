@@ -109,12 +109,11 @@
                         <div class="w-full lg:w-1/2">
                             <div class="rounded-[5px] overflow-hidden shadow-2xl relative group">
                                 <img src="../../assets/images/ambulance.jpg"
-                                    class="w-full h-[450px] object-cover transition-transform duration-700 group-hover:scale-110"
+                                    class="w-full h-[450px] object-cover transition-transform duration-700 group-hover:scale-105"
                                     alt="Ambulans parkı" />
                                 <div class="absolute inset-0 bg-gradient-to-t from-[#00A3C4]/20 to-transparent"></div>
                             </div>
                         </div>
-
                         <div class="w-full lg:w-1/2 space-y-8">
                             <div>
                                 <h2 class="text-4xl font-extrabold text-[#2d3142]">Təcili Tibbi Yardıma ehtiyacınız var?
