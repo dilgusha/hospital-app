@@ -72,12 +72,12 @@
                         <div class="w-full lg:w-1/2 relative h-[400px] md:h-[550px] mb-10 lg:mb-0">
                             <div
                                 class="absolute top-0 left-0 w-[65%] h-[75%] rounded-[12px] overflow-hidden shadow-2xl z-20 border-4 border-white transition-transform hover:z-30 hover:scale-[1.03] duration-300">
-                                <img src="../../assets/images/Union1.png" class="w-full h-full object-cover"
+                                <img src="../../assets/images/Union1.jpg" class="w-full h-full object-cover"
                                     alt="Tibbi müdaxilə" />
                             </div>
                             <div
                                 class="absolute bottom-0 right-0 w-[65%] h-[75%] rounded-[12px] overflow-hidden shadow-2xl z-10 border-4 border-white transition-transform hover:z-30 hover:scale-[1.03] duration-300">
-                                <img src="../../assets/images/union2.png" class="w-full h-full object-cover"
+                                <img src="../../assets/images/union2.jpg" class="w-full h-full object-cover"
                                     alt="Ambulans daxili" />
                             </div>
                         </div>
