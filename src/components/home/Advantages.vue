@@ -36,12 +36,12 @@ const advantages = ref([
     icon: 'fas fa-clock'
   },
   {
-    title: 'Xüsusi qayğı',
+    title: 'Xüsusi Qayğı',
     description: 'Referans Təcili Tibbi Yardım ilə qayğınız bizə əmanətdir.',
     icon: 'fas fa-user-shield'
   },
   {
-    title: 'Təcrübəli həkimlər',
+    title: 'Təcrübəli Həkimlər',
     description: 'Sürətli və operativ yanaşma ilə peşəkar briqada xidmətinizdədir.',
     icon: 'fas fa-stethoscope'
   }

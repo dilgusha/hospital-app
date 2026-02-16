@@ -4,6 +4,9 @@ import Footer from './components/layout/Footer.vue';
 import Header from './components/layout/Header.vue';
 import ScrollToTop from './components/common/ScrollToTop.vue';
 import FloatingPhone from './components/common/FloatingPhone.vue';
+import { ref } from 'vue';
+const scrollVisible = ref(false)
+
 </script>
 
 <template>
@@ -12,6 +15,6 @@ import FloatingPhone from './components/common/FloatingPhone.vue';
   <RouterView />
 
   <Footer v-if="$route.name !== 'Login' && $route.name !== 'Register'" />
-  <FloatingPhone />
-  <ScrollToTop />
+  <FloatingPhone :scroll-visible="scrollVisible" />
+  <ScrollToTop @visible-change="scrollVisible = $event" />
 </template>

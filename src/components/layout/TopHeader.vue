@@ -80,8 +80,8 @@
       </div>
 
       <div class="flex items-center space-x-4">
-        <span class="text-[10px] uppercase tracking-[0.2em] opacity-50 hidden xl:block font-bold">Sosial
-          Şəbəkələr</span>
+        <span class="text-[10px]  tracking-[0.2em] opacity-50 hidden xl:block font-bold">{{ azUpper("Sosial Şəbəkələr") }}</span>
+ 
         <div class="flex items-center bg-white/10 p-1 rounded-xl border border-white/5">
           <a v-for="(icon, index) in ['facebook-f', 'instagram', 'telegram-plane']" :key="index" href="#"
             class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-white hover:text-[#00A3C4] transition-all duration-300 group">
@@ -108,6 +108,16 @@
     <span class="absolute inset-0 rounded-2xl ring-4 ring-red-600/30 animate-pulse"></span>
   </a> -->
 </template>
+<script setup>
+import azUpper from '../../utils/font.js';
+// const azUpper = (text) => {
+//   return text
+//     .replace(/i/g, 'İ')
+//     .replace(/ı/g, 'I')
+//     .toUpperCase();
+// };
+
+</script>
 
 <style scoped>
 @keyframes shimmer {

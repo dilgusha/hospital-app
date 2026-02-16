@@ -4,7 +4,7 @@ export const newsData = [
   {
     id: 1,
     date: '29.01.2025',
-    description: 'Ünvanda müayinə rahat...',
+    description: 'Ünvanda Müayinə Rahat...',
     icon: svgIcons.medic
   },
   {
@@ -22,7 +22,7 @@ export const newsData = [
   {
     id: 4,
     date: '30.01.2025',
-    description: 'Yeni xəbər...',
+    description: 'Yeni Xəbər...',
     icon: svgIcons.medic
   }
 ]

@@ -67,11 +67,11 @@
                   </div>
                 </div>
                 <a :href="item.path" @click.prevent="scrollToSection(item.path, index)"
-                  class="relative px-6 py-3 text-sm font-bold uppercase tracking-wide transition-all duration-300 rounded-2xl block group"
+                  class="relative px-6 py-3 text-sm font-bold tracking-wide transition-all duration-300 rounded-2xl block group"
                   :class="activeSection === item.path ? 'text-[#00A3C4]' : 'text-gray-600 hover:text-[#2d3142]'">
                   <span class="relative inline-block transition-all duration-300"
                     :class="isMoving && targetIdx === index ? 'opacity-40 blur-[0.5px]' : 'opacity-100'">
-                    {{ item.name }}
+                    {{ azUpper(item.name) }}
                   </span>
 
                   <span
@@ -105,7 +105,7 @@
             </transition>
           </div>
 
-          <div class="flex items-center space-x-4 ml-8">
+          <!-- <div class="flex items-center space-x-4 ml-8">
             <router-link to="/login" class="text-[14px] font-bold text-gray-500 hover:text-[#00A3C4] transition-colors">
               Daxil ol
             </router-link>
@@ -116,7 +116,7 @@
                 class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
               </div>
             </router-link>
-          </div>
+          </div> -->
         </nav>
         <div class="lg:hidden flex items-center relative z-[110]"> <button @click="toggleMobileMenu"
             class="w-11 h-11 flex items-center justify-center rounded-xl bg-gray-50 text-[#00A3C4] border border-gray-100 active:scale-90 transition-all">
@@ -168,6 +168,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted, watch } from 'vue';
 import { useRoute } from 'vue-router';
+import azUpper from '../../utils/font.js';
 
 const route = useRoute();
 const activeSection = ref('');

@@ -24,9 +24,9 @@ import { ref, onMounted } from 'vue';
 
 const statsSection = ref(null);
 const stats = [
-  { target: 20, label: "Təcili Tibbi Yardım<br>maşını" },
-  { target: 512, label: "Tibbi briqada" },
-  { target: 4125, label: "Laboratoriya<br>analizləri" },
+  { target: 20, label: "Təcili Tibbi Yardım<br>Avtomobili" },
+  { target: 512, label: "Tibbi Briqada" },
+  { target: 4125, label: "Laboratoriya<br>Analizləri" },
   { target: 5250, label: "Çağırış" }
 ];
 

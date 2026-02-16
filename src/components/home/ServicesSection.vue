@@ -173,7 +173,7 @@ const advantages = [
     'Fərdi yanaşma və xidmət keyfiyyəti',
     'Daha sürətli və effektiv xidmət',
     'Ölkədaxili və Ölkəxarici təxliyə',
-    'Stand by xidməti',
+    'Stand by Xidməti',
     'Alternativ müalicə imkanları'
 ];
 </script>
