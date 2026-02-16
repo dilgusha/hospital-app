@@ -12,24 +12,20 @@
         </a>
 
         <nav class="hidden lg:flex items-center">
-          <!-- <div class="flex items-center space-x-1">
-            <a v-for="item in menuItems" :key="item.name" href="javascript:void(0)"
-              @click.prevent="scrollToSection(item.path)"
-              class="nav-item px-4 py-2 rounded-full font-semibold transition-all duration-300 text-[14px] cursor-pointer"
-              :class="activeSection === item.path
-                ? 'bg-[#00A3C4] text-white'
-                : 'text-gray-600 hover:text-[#00A3C4] hover:bg-blue-50'">
-              {{ item.name }}
-            </a>
-
-          </div> -->
           <div class="relative">
-            <div
+            <!-- <div
               class="absolute top-0 h-full bg-gradient-to-r from-[#00A3C4]/8 to-[#0077B6]/8 rounded-2xl transition-all duration-500 ease-out border border-[#00A3C4]/20"
               :style="{
                 left: indicatorLeft + 'px',
                 width: indicatorWidth + 'px'
-              }"></div>
+              }"></div> -->
+            <div v-show="activeIdx !== -1"
+              class="absolute top-0 h-full bg-gradient-to-r from-[#00A3C4]/10 to-[#0077B6]/10 rounded-2xl transition-all duration-500 ease-out border border-[#00A3C4]/20"
+              :style="{
+                left: indicatorLeft + 'px',
+                width: indicatorWidth + 'px'
+              }">
+            </div>
 
             <ul class="flex items-center space-x-1 relative z-10">
               <li v-for="(item, index) in menuItems" :key="index" :ref="el => menuRefs[index] = el" class="relative">
@@ -62,7 +58,6 @@
                     <div class="relative px-2" :class="movingDirection === 'right' ? '' : 'scale-x-[-1]'">
                       <i class="fas fa-ambulance text-[#00A3C4] text-2xl drop-shadow-xl filter brightness-110"></i>
                     </div>
-
                     <div class="absolute bottom-0 flex space-x-1"
                       :class="movingDirection === 'right' ? '-left-6' : '-right-6'">
                       <div class="w-2 h-2 bg-gray-300/40 rounded-full animate-dust-cloud"></div>
@@ -71,17 +66,9 @@
                     </div>
                   </div>
                 </div>
-
-                <!-- <a href="#" @click.prevent="setActive(index)"
+                <a :href="item.path" @click.prevent="scrollToSection(item.path, index)"
                   class="relative px-6 py-3 text-sm font-bold uppercase tracking-wide transition-all duration-300 rounded-2xl block group"
-                  :class="activeIdx === index
-                    ? 'text-[#00A3C4]'
-                    : 'text-gray-600 hover:text-[#2d3142]'"> -->
-                <a :href="item.path" @click="setActive(index)" @click.prevent="scrollToSection(item.path, index)"
-                  class="relative px-6 py-3 text-sm font-bold uppercase tracking-wide transition-all duration-300 rounded-2xl block group"
-                  :class="activeIdx === index
-                    ? 'text-[#00A3C4]'
-                    : 'text-gray-600 hover:text-[#2d3142]'">
+                  :class="activeSection === item.path ? 'text-[#00A3C4]' : 'text-gray-600 hover:text-[#2d3142]'">
                   <span class="relative inline-block transition-all duration-300"
                     :class="isMoving && targetIdx === index ? 'opacity-40 blur-[0.5px]' : 'opacity-100'">
                     {{ item.name }}
@@ -94,7 +81,6 @@
               </li>
             </ul>
           </div>
-
           <div class="h-6 w-px bg-gray-200 mx-6"></div>
 
           <div class="relative" ref="langDropdown">
@@ -132,13 +118,6 @@
             </router-link>
           </div>
         </nav>
-
-        <!-- <div class="lg:hidden flex items-center">
-          <button @click="toggleMobileMenu"
-            class="w-11 h-11 flex items-center justify-center rounded-xl bg-gray-50 text-[#00A3C4] border border-gray-100 active:scale-90 transition-all">
-            <i :class="isMobileMenuOpen ? 'fas fa-times' : 'fas fa-bars-staggered'" class="text-xl"></i>
-          </button>
-        </div> -->
         <div class="lg:hidden flex items-center relative z-[110]"> <button @click="toggleMobileMenu"
             class="w-11 h-11 flex items-center justify-center rounded-xl bg-gray-50 text-[#00A3C4] border border-gray-100 active:scale-90 transition-all">
             <i :class="isMobileMenuOpen ? 'fas fa-times' : 'fas fa-bars-staggered'" class="text-xl"></i>
@@ -149,11 +128,6 @@
       <transition name="mobile-menu bg-white">
         <div v-if="isMobileMenuOpen" class="fixed inset-0 bg-white z-105 lg:hidden flex flex-col pt-24 px-6">
           <div class="flex flex-col space-y-2">
-            <!-- <a v-for="item in menuItems" :key="item.name" href="javascript:void(0)"
-              @click.prevent="scrollToSection(item.path)"
-              class="text-xl font-bold p-4 rounded-2xl hover:bg-gray-50 text-gray-800 hover:text-[#00A3C4] transition-all cursor-pointer">
-              {{ item.name }}
-            </a> -->
             <a v-for="item in menuItems" :key="item.name" @click.prevent="scrollToSection(item.path)"
               class="text-xl font-bold p-4 rounded-2xl transition-all cursor-pointer " :class="activeSection === item.path
                 ? 'text-[#00A3C4] '
@@ -199,21 +173,36 @@ const route = useRoute();
 const activeSection = ref('');
 
 const handleScroll = () => {
-  const scrollPosition = window.scrollY + 120;
+  const scrollPosition = window.scrollY + 150;
 
-  for (const item of menuItems) {
+  menuItems.forEach((item, index) => {
+    if (window.scrollY < 150) {
+      activeSection.value = '';
+      activeIdx.value = -1;
+      indicatorWidth.value = 0;
+      return;
+    }
     const section = document.querySelector(item.path);
     if (section) {
       const sectionTop = section.offsetTop;
       const sectionHeight = section.offsetHeight;
 
-      if (
-        scrollPosition >= sectionTop &&
-        scrollPosition < sectionTop + sectionHeight
-      ) {
+      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
         activeSection.value = item.path;
+
+        if (!isMoving.value) {
+          updateIndicator(index);
+          activeIdx.value = index;
+        }
       }
     }
+  });
+};
+const updateIndicator = (index) => {
+  const targetEl = menuRefs.value[index];
+  if (targetEl) {
+    indicatorLeft.value = targetEl.offsetLeft;
+    indicatorWidth.value = targetEl.offsetWidth;
   }
 };
 
@@ -232,10 +221,21 @@ const languages = {
   EN: { name: 'EN', flag: 'https://flagcdn.com/w20/gb.png' }
 };
 
-const scrollToSection = (id) => {
+const scrollToSection = (id, index) => {
+  if (index !== undefined) {
+    setActive(index);
+  }
+
+  if (id === '#') {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    activeSection.value = '';
+    activeIdx.value = 0;
+    return;
+  }
+
   const element = document.querySelector(id);
   if (element) {
-    const offset = 80;
+    const offset = 90;
     const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
 
     window.scrollTo({
@@ -243,10 +243,10 @@ const scrollToSection = (id) => {
       behavior: 'smooth'
     });
 
+    activeSection.value = id;
     isMobileMenuOpen.value = false;
   }
 };
-
 const currentLang = ref('AZ');
 const isLangOpen = ref(false);
 const isMobileMenuOpen = ref(false);
@@ -269,6 +269,18 @@ const handleClickOutside = (event) => {
     isLangOpen.value = false;
   }
 };
+onMounted(() => {
+  handleScroll();
+
+  setTimeout(() => {
+    const currentIdx = activeIdx.value >= 0 ? activeIdx.value : 0;
+    const targetEl = menuRefs.value[currentIdx];
+    if (targetEl) {
+      indicatorLeft.value = targetEl.offsetLeft;
+      indicatorWidth.value = targetEl.offsetWidth;
+    }
+  }, 200);
+});
 
 onMounted(() => document.addEventListener('click', handleClickOutside));
 onUnmounted(() => document.removeEventListener('click', handleClickOutside));
@@ -283,7 +295,7 @@ onUnmounted(() => {
 
 
 
-const activeIdx = ref(0);
+const activeIdx = ref(-1);
 const indicatorLeft = ref(0);
 const indicatorWidth = ref(0);
 const ambulanceOffset = ref(-50);
@@ -459,7 +471,6 @@ onMounted(() => {
   animation: drive-in-left 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
-/* Delay classes */
 .delay-75 {
   animation-delay: 0.1s;
 }

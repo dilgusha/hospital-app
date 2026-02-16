@@ -32,25 +32,22 @@
                             əlimizdən gələni edirik!
                         </p>
                     </div>
-
-                    <!-- <button
-                        class="mt-8 px-8 py-3 bg-[#00A3C4] text-white font-bold rounded-lg hover:bg-[#008ba8] cursor-pointer transition-all transform hover:-translate-y-1 shadow-lg shadow-cyan-100">
-                        Daha çox
-                    </button> -->
                 </div>
-
                 <div class="w-full lg:w-1/2 order-1 lg:order-2">
-                    <div class="relative group cursor-pointer overflow-hidden rounded-2xl shadow-2xl">
-                        <img src="../../assets/images/endokrin_xeber.jpg" alt="Referans Ambulance"
-                            class="w-full h-87.5 md:h-112.5 object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <div class="relative group overflow-hidden rounded-2xl shadow-2xl h-87.5 md:h-112.5">
+                        <video autoplay muted loop playsinline
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            <source src="https://www.youtube.com/" type="video/mp4">
+                            Sizin brauzer video dəstəkləmir.
+                        </video>
 
                         <div
-                            class="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors duration-300">
+                            class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300">
                         </div>
 
-                        <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
                             <div
-                                class="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-white/50 group-hover:scale-110 transition-transform duration-300">
+                                class="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-white/50 group-hover:scale-110 transition-all duration-300">
                                 <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-xl">
                                     <i class="fas fa-play text-[#00A3C4] text-2xl ml-1"></i>
                                 </div>
@@ -60,7 +57,19 @@
                         <div class="absolute bottom-0 left-0 w-full h-2 bg-[#00A3C4]"></div>
                     </div>
                 </div>
-
+                <!-- <div class="w-full lg:w-1/2 order-1 lg:order-2">
+                <div class="relative rounded-2xl shadow-2xl overflow-hidden h-87.5 md:h-112.5 bg-black">
+                    <iframe 
+                    class="w-full h-full"
+                    src="https://www.youtube.com/embed/SƏNİN_VİDEO_İD-N?autoplay=1&mute=1&loop=1&playlist=SƏNİN_VİDEO_İD-N" 
+                    title="Referans Ambulance Video" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen
+                    ></iframe>
+                    <div class="absolute bottom-0 left-0 w-full h-2 bg-[#00A3C4]"></div>
+                </div>
+                </div> -->
             </div>
         </div>
     </section>

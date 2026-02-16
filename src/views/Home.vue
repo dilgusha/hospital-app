@@ -5,6 +5,7 @@
     <ServicesGrid id="services" />
     <Advantages id="advantages" />
     <Stats id="stats" />
+    <ServicesSection/>
     <Doctors id="doctors" />
     <SocialSection />
     <Comments />
@@ -22,4 +23,5 @@ import Doctors from '../components/home/Doctors.vue';
 import SocialSection from '../components/home/SocialSection.vue';
 import Comments from '../components/home/Comments.vue';
 import Map from '../components/home/Map.vue';
+import ServicesSection from '../components/home/ServicesSection.vue';
 </script>

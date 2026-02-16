@@ -1,5 +1,5 @@
 <template>
-  <section id="services" class="py-20 md:py-28 bg-[#f8fafc] overflow-hidden">
+  <section id="services" class="py-20 md:py-28 bg-[#f8fafc] overflow-hidden scroll-mt-24">
     <div class="container mx-auto px-4 relative">
       <h2 class="text-3xl font-extrabold text-[#2d3142] relative mb-12">
         Xidmətlərimiz
