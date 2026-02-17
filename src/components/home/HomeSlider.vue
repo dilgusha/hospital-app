@@ -7,27 +7,14 @@ import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 import azUpper from '../../utils/font';
 
-
+import { heroSlides } from '@/data/heroSlides.js';
 const modules = [Navigation, Pagination, Autoplay, EffectFade];
-
+const slides = heroSlides;
 const getImageUrl = (name) => {
   return new URL(`../../assets/images/${name}`, import.meta.url).href;
 };
 
-const slides = [
-  {
-    image: getImageUrl('slider1.webp'),
-    subtitle: '7/24 Təcili Tibbi Yardım',
-    title: 'Həyatınız Bizim üçün Dəyərlidir',
-    description: 'Ən müasir avadanlıqlarla təchiz olunmuş ambulanslarımızla saniyələr içində yanınızdayıq.'
-  },
-  {
-    image: getImageUrl('slider2.jpg'),
-    subtitle: 'Beynəlxalq Təxliyə',
-    title: 'Sərhəd Tanımayan Tibbi Xidmət',
-    description: 'Hava və quru yolu ilə xəstələrin dünyanın istənilən nöqtəsinə təhlükəsiz daşınması.'
-  }
-];
+
 </script>
 
 <template>
@@ -44,8 +31,9 @@ const slides = [
       }" class="h-125 md:h-162.5 lg:h-187.5 w-full">
       <swiper-slide v-for="(slide, index) in slides" :key="index">
         <div class="relative w-full h-full overflow-hidden ">
-         
-          <img :src="slide.image" :alt="slide.title" class="absolute inset-0 w-full h-full object-cover hero-image"
+
+          <img :src="getImageUrl(slide.image)" :alt="slide.title"
+            class="absolute inset-0 w-full h-full object-cover hero-image"
             :fetchpriority="index === 0 ? 'high' : 'auto'" :loading="index === 0 ? 'eager' : 'lazy'" decoding="sync" />
           <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent z-0"></div>
 
@@ -55,7 +43,7 @@ const slides = [
             <div class="max-w-2xl space-y-6">
               <span
                 class="inline-block px-4 py-1.5 bg-[#00A3C4] text-white text-xs md:text-sm font-bold rounded-full uppercase tracking-widest animate-fade-in-down">
-                {{azUpper( slide.subtitle) }}
+                {{ azUpper(slide.subtitle) }}
               </span>
               <h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-tight animate-fade-in-up">
                 {{ slide.title }}
@@ -123,8 +111,7 @@ const slides = [
 }
 
 
-
 .swiper-slide {
   background-color: transparent !important;
 }
-</style> 
+</style>

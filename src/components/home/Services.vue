@@ -88,26 +88,10 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { svgIcons } from '../../assets/images/svg'
+import { servicesList } from '@/data/servicesList.js';
 
 
 const modules = [Navigation, Pagination, Autoplay];
 
-const servicesList = ref([
-  {
-    title: 'Xəstənin Təxliyəsi',
-    description: 'Referans Ambulans Respublikanın istənilən bölgəsinə xəstə təxliyəsi xidmətləri təklif edir. Referans Medical Group, Türkiyənin Apronjet Aircraft aviaşirkətinin Azərbaycandakı rəsmi distribütorudur. Biz istənilən xarici ölkəyə nəqliyyat və təxliyə xidmətləri göstəririk.',
-    icon: svgIcons.ambulance
-  },
-  {
-    title: 'Pediatriya Təcili Tibbi Yardım',
-    description: 'Referans Ambulans Pediatric Ambulans Xidməti uşaqlarınızın sağlamlığını təmin etmək üçün 24/7 mövcuddur. Beynəlxalq standartlara uyğun olaraq, avtombillərimiz 2 dəqiqə ərzində yola düşür. Uşaqlarınızın sağlamlığı etibarlı əllərdədir!',
-    icon: svgIcons.ambulance
-  },
-  {
-    title: 'Hava Təxliyəsi',
-    description: 'Xüsusi təchiz olunmuş təyyarə və helikopterlərlə həm ölkə daxili, həm də ölkə xaricinə kritik vəziyyətdə olan xəstələrin sürətli və təhlükəsiz daşınması.',
-    icon: svgIcons.ambulance
-  }
-]);
+
 </script>
