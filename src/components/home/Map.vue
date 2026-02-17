@@ -101,7 +101,7 @@ import { ref } from 'vue';
 const branches = [
   {
     id: 1,
-    name: 'Referans Ambulance',
+    name: 'Referans Ambulans',
     address: 'Yusif Səfərov küçəsi, Bakı',
     mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3039.428490186165!2d49.8619113!3d40.3771909!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307d079efb51ad%3A0xdfc9725621a00940!2sLeyla%20Medical%20Center!5e0!3m2!1str!2saz!4v1715850000000!5m2!1str!2saz', // Real embed linkinizi bura qoyun
     googleMapsLink: '#'

@@ -52,7 +52,7 @@
                     </div>
                     <div class="w-full lg:w-1/2 space-y-6">
                         <div class="inline-block">
-                            <h2 class="text-4xl font-extrabold text-[#2d3142] mb-2">"Stand by" xidməti</h2>
+                            <h2 class="text-4xl font-extrabold text-[#2d3142] mb-2">"Stand by" Xidməti</h2>
                             <p class="text-xl text-[#00A3C4] font-medium mb-2">(istənilən məkanda müşayiət)</p>
                             <div class="h-1 w-24 bg-[#00A3C4] rounded-full"></div>
                         </div>
@@ -83,8 +83,8 @@
                         </div>
                         <div class="w-full lg:w-1/2 space-y-6">
                             <div>
-                                <span class="text-[#00A3C4] font-medium tracking-widest uppercase text-sm">niyə</span>
-                                <h2 class="text-4xl font-extrabold text-[#2d3142] mt-2">Referans Ambulance?</h2>
+                                <span class="text-[#00A3C4] font-medium tracking-widest uppercase text-sm"> {{azUpper("niyə")}}</span>
+                                <h2 class="text-4xl font-extrabold text-[#2d3142] mt-2">Referans Ambulans ?</h2>
                                 <div class="h-1 w-20 bg-[#00A3C4] mt-4 rounded-full"></div>
                             </div>
                             <p class="text-gray-600 text-lg leading-relaxed">
@@ -134,8 +134,7 @@
                                     </div>
                                     <div class="flex flex-col">
                                         <span
-                                            class="text-[10px] uppercase tracking-widest text-gray-400 font-bold">Çağrı
-                                            Mərkəzi</span>
+                                            class="text-[10px] uppercase tracking-widest text-gray-400 font-bold">{{ azUpper("Çağrı Mərkəzi") }}</span>
                                         <span
                                             class="text-xl font-bold text-[#2d3142] group-hover:text-[#00A3C4] transition-colors leading-tight">*0003</span>
                                     </div>
@@ -150,8 +149,7 @@
                                     </div>
                                     <div class="flex flex-col">
                                         <span
-                                            class="text-[10px] uppercase tracking-widest text-gray-400 font-bold">WhatsApp
-                                            Xətti</span>
+                                            class="text-[10px] uppercase tracking-widest text-gray-400 font-bold">{{ azUpper("WhatsApp Xətti") }}</span>
                                         <span
                                             class="text-xl font-bold text-[#2d3142] group-hover:text-green-500 transition-colors leading-tight">+994
                                             51 729 00 03</span>
@@ -168,6 +166,8 @@
 </template>
 
 <script setup>
+import azUpper from '../../utils/font';
+
 const advantages = [
     'Müasir avadanlıqlarla təchiz olunmuş Ambulanslar',
     'Fərdi yanaşma və xidmət keyfiyyəti',

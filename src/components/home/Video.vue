@@ -5,10 +5,10 @@
                 <div class="text-center sm:text-left">
                     <div class="flex items-center justify-center sm:justify-start gap-2 mb-2">
                         <span class="w-8 h-0.5 bg-[#76bc21]"></span>
-                        <p class="text-gray-500 text-sm font-semibold uppercase tracking-widest">Youtube kanalımız</p>
+                        <p class="text-gray-500 text-sm font-semibold uppercase tracking-widest">{{ azUpper("Youtube kanalımız") }}</p>
                     </div>
-                    <h2 class="text-[#2D3139] text-3xl md:text-4xl font-extrabold uppercase">
-                        Faydalı <span class="text-[#76bc21]">Məlumatlar</span>
+                    <h2 class="text-[#2D3139] text-3xl md:text-4xl font-extrabold uppercase"> {{ azUpper("Faydalı") }}
+                        <span class="text-[#76bc21]">{{ azUpper("Məlumatlar ") }}</span>
                     </h2>
                 </div>
                 <a href="#"
@@ -56,6 +56,7 @@
 
 <script setup>
 import { ref } from 'vue';
+import azUpper from '../../utils/font';
 
 const videos = ref([
     {

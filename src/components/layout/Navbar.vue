@@ -4,7 +4,7 @@
         <a href="#" class="group flex items-center transition-transform duration-300 hover:scale-105"
           @click.prevent="scrollToSection('#')">
           <div class="relative">
-            <img src="../../assets/images/logo (1).png" alt="Referans Ambulance" class="h-12 md:h-16 object-contain" />
+            <img src="../../assets/images/logo (1).png" alt="Referans Ambulans" class="h-12 md:h-16 object-contain" />
             <div
               class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#00A3C4] transition-all duration-300 group-hover:w-full">
             </div>

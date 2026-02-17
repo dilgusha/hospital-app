@@ -7,7 +7,7 @@
 
         <div class="lg:col-span-4 space-y-8 bg-[#00A3C4]">
           <router-link to="/" class="inline-block transition-transform hover:scale-105 duration-300">
-            <img src="../../assets/images/footlogo.png" alt="Referans Ambulance" class="h-20 w-auto object-contain" />
+            <img src="../../assets/images/footlogo.png" alt="Referans Ambulans" class="h-20 w-auto object-contain" />
           </router-link>
 
           <div class="space-y-4">
@@ -17,7 +17,7 @@
                 <i class="fas fa-phone-alt text-lg animate-phone-ring"></i>
               </div>
               <div class="flex flex-col">
-                <span class="text-[10px] uppercase tracking-[0.2em] opacity-60">Təcili Yardım</span>
+                <span class="text-[10px] uppercase tracking-[0.2em] opacity-60"> {{ azUpper("Təcili Yardım") }}</span>
                 <span class="text-2xl font-black tracking-tighter">*0003</span>
               </div>
             </a>
@@ -57,7 +57,7 @@
               class="flex items-center space-x-4 bg-white text-[#00A3C4] px-5 py-3 rounded-2xl transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 min-w-45">
               <i class="fab fa-apple text-3xl"></i>
               <div class="flex flex-col items-start leading-none">
-                <span class="text-[10px] font-bold uppercase opacity-60 mb-1">Available on</span>
+                <span class="text-[10px] font-bold uppercase opacity-60 mb-1">{{ azUpper("Available on") }}</span>
                 <span class="text-base font-black">App Store</span>
               </div>
             </a>
@@ -65,7 +65,7 @@
               class="flex items-center space-x-4 bg-white text-[#00A3C4] px-5 py-3 rounded-2xl transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 min-w-45">
               <i class="fab fa-google-play text-2xl text-[#00A3C4]"></i>
               <div class="flex flex-col items-start leading-none">
-                <span class="text-[10px] font-bold uppercase opacity-60 mb-1">Get it on</span>
+                <span class="text-[10px] font-bold uppercase opacity-60 mb-1">{{ azUpper("Get it on") }}</span>
                 <span class="text-base font-black">Google Play</span>
               </div>
             </a>
@@ -88,7 +88,7 @@
         <div
           class="flex flex-col lg:flex-row justify-center lg:justify-start items-center lg:items-center flex-wrap gap-2 lg:gap-4">
           <p class="text-[13px] opacity-70">
-            “Referans Ambulance” © 2026 Bütün hüquqlar qorunur.
+            “Referans Ambulans” © 2026 Bütün hüquqlar qorunur.
           </p>
           <Footer200 />
         </div>
@@ -123,6 +123,7 @@
 </style>
 
 <script setup>
+import azUpper from '../../utils/font';
 import Footer200 from '../common/Footer-200.vue';
 
 

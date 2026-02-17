@@ -5,6 +5,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
+import azUpper from '../../utils/font';
 
 
 const modules = [Navigation, Pagination, Autoplay, EffectFade];
@@ -54,7 +55,7 @@ const slides = [
             <div class="max-w-2xl space-y-6">
               <span
                 class="inline-block px-4 py-1.5 bg-[#00A3C4] text-white text-xs md:text-sm font-bold rounded-full uppercase tracking-widest animate-fade-in-down">
-                {{ slide.subtitle }}
+                {{azUpper( slide.subtitle) }}
               </span>
               <h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-tight animate-fade-in-up">
                 {{ slide.title }}
