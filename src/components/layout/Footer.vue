@@ -124,7 +124,7 @@
 
 <script setup>
 import azUpper from '../../utils/font';
-import Footer200 from '../common/Footer-200.vue';
+import Footer200 from '@/components/common/Footer-200.vue';
 
 
 const menuItems = [

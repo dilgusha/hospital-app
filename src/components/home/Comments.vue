@@ -86,31 +86,24 @@ const doctors = [
           </h2>
           <span class="text-gray-500">Fikirləriniz bizim üçün hər zaman önəmlidir.</span>
         </div>
-        
+
         <div class="flex space-x-3">
-          <button class="prev-btn w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-[#00A3C4] hover:text-white transition-all">
+          <button
+            class="prev-btn w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-[#00A3C4] hover:text-white transition-all">
             <i class="fas fa-arrow-left"></i>
           </button>
-          <button class="next-btn w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-[#00A3C4] hover:text-white transition-all">
+          <button
+            class="next-btn w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-[#00A3C4] hover:text-white transition-all">
             <i class="fas fa-arrow-right"></i>
           </button>
         </div>
       </div>
-      <swiper
-        :modules="[Navigation, Autoplay, Pagination]"
-        :slides-per-view="1"
-        :space-between="30"
-        :centered-slides="true"
-        :loop="true"
-        :navigation="{ prevEl: '.prev-btn', nextEl: '.next-btn' }"
-        :autoplay="{ delay: 4000 }"
-        :pagination="{ clickable: true }"
-        :breakpoints="{
+      <swiper :modules="[Navigation, Autoplay, Pagination]" :slides-per-view="1" :space-between="30"
+        :centered-slides="true" :loop="true" :navigation="{ prevEl: '.prev-btn', nextEl: '.next-btn' }"
+        :autoplay="{ delay: 4000 }" :pagination="{ clickable: true }" :breakpoints="{
           '768': { slidesPerView: 2, centeredSlides: false },
-          '1024': { slidesPerView: 3, centeredSlides: true } 
-        }"
-        class="pb-14 reviews-swiper"
-      >
+          '1024': { slidesPerView: 3, centeredSlides: true }
+        }" class="pb-14 reviews-swiper">
         <swiper-slide v-for="doctor in doctors" :key="doctor.id" v-slot="{ isActive }">
           <div :class="[
             'rounded-2xl p-8 shadow-sm border transition-all duration-500 min-h-[320px] flex flex-col justify-between cursor-pointer active:cursor-grabbing',
@@ -121,7 +114,7 @@ const doctors = [
             </p>
             <div class="flex items-center space-x-4">
               <div class="w-16 h-16 shrink-0">
-                <img :src="doctor.image" :alt="doctor.name" 
+                <img :src="doctor.image" :alt="doctor.name"
                   class="w-full h-full object-cover rounded-full border-2 border-white shadow-sm" />
               </div>
               <div class="text-left">
@@ -129,7 +122,7 @@ const doctors = [
                   {{ doctor.name }}
                 </h4>
                 <p :class="['text-xs font-medium', isActive ? 'text-cyan-50' : 'text-gray-400']">
-                   Xəstə
+                  Xəstə
                 </p>
               </div>
             </div>

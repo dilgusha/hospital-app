@@ -171,7 +171,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted, watch } from 'vue';
 import { useRoute } from 'vue-router';
-import azUpper from '../../utils/font.js';
+import azUpper from '@/utils/font.js';
 import { throttle } from 'lodash';
 
 const route = useRoute();

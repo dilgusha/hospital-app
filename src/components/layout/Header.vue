@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import TopHeader from './TopHeader.vue';
-import Navbar from './Navbar.vue';
+import TopHeader from '@/components/layout/TopHeader.vue';
+import Navbar from '@/components/layout/Navbar.vue';
 </script>
 
 <template>
