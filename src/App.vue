@@ -10,11 +10,11 @@ const scrollVisible = ref(false)
 </script>
 
 <template>
-  <Header v-if="$route.name !== 'Login' && $route.name !== 'Register'" />
+  <Header />
 
   <RouterView />
 
-  <Footer v-if="$route.name !== 'Login' && $route.name !== 'Register'" />
+  <Footer />
   <FloatingPhone :scroll-visible="scrollVisible" />
   <ScrollToTop @visible-change="scrollVisible = $event" />
 </template>

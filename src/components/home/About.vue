@@ -2,7 +2,6 @@
     <section class="py-16 md:py-24 bg-[#f8f9fa]" id="about">
         <div class="container mx-auto px-4">
             <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
-
                 <div class="w-full lg:w-1/2 order-2 lg:order-1">
                     <div class="mb-8">
                         <h2 class="text-3xl md:text-4xl font-extrabold text-[#2d3142] mb-4 relative">
@@ -10,7 +9,6 @@
                             <span class="absolute -bottom-3 left-0 w-20 h-1 bg-[#00A3C4] rounded-full"></span>
                         </h2>
                     </div>
-
                     <div class="space-y-6 text-[#555] leading-relaxed text-sm md:text-base">
                         <p>
                             <span class="font-bold text-[#2d3142]">Referans Ambulans</span>, Azərbaycanda ilk özəl
@@ -19,14 +17,12 @@
                             xidmətlərimizə ölkənin istənilən bölgəsində təcili tibbi yardım, eləcə də müxtəlif
                             klinikalara təxliyə xidmətləri daxildir.
                         </p>
-
                         <p>
                             Bundan əlavə, Referans Medical Group olaraq, biz Türkiyənin Apronjet aviaşirkətinin
                             Azərbaycandakı rəsmi distribütoruyuq. Buna görə də, hava təcili yardım xidmətimizdən
                             istifadə edərək, xəstələrin istənilən xarici ölkəyə və xarici ölkələrə təxliyəsini
                             təmin edirik.
                         </p>
-
                         <p class="font-medium italic border-l-4 border-[#00A3C4] pl-4 py-2 bg-white/50 rounded-r-lg">
                             Xəyallarınızı, ümidlərinizi və istəklərinizi gerçəkləşdirməyinizə kömək etmək üçün
                             əlimizdən gələni edirik!
@@ -40,11 +36,9 @@
                             <source src="https://www.youtube.com/" type="video/mp4">
                             Sizin brauzer video dəstəkləmir.
                         </video>
-
                         <div
                             class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300">
                         </div>
-
                         <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
                             <div
                                 class="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-white/50 group-hover:scale-110 transition-all duration-300">
@@ -53,7 +47,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="absolute bottom-0 left-0 w-full h-2 bg-[#00A3C4]"></div>
                     </div>
                 </div>

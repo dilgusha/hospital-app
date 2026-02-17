@@ -96,7 +96,6 @@ const doctors = [
           </button>
         </div>
       </div>
-
       <swiper
         :modules="[Navigation, Autoplay, Pagination]"
         :slides-per-view="1"
@@ -117,11 +116,9 @@ const doctors = [
             'rounded-2xl p-8 shadow-sm border transition-all duration-500 min-h-[320px] flex flex-col justify-between cursor-pointer active:cursor-grabbing',
             isActive ? 'bg-[#00A3C4] text-white scale-105 shadow-xl border-transparent' : 'bg-white text-gray-600 border-gray-100'
           ]">
-            
             <p class="text-sm leading-relaxed mb-6 italic">
               "{{ doctor.comment }}"
             </p>
-
             <div class="flex items-center space-x-4">
               <div class="w-16 h-16 shrink-0">
                 <img :src="doctor.image" :alt="doctor.name" 

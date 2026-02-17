@@ -100,21 +100,22 @@
               </div>
             </transition>
           </div>
-
           <!-- <div class="flex items-center space-x-4 ml-8">
-            <router-link to="/login" class="text-[14px] font-bold text-gray-500 hover:text-[#00A3C4] transition-colors">
-              Daxil ol
-            </router-link>
-            <router-link to="/register"
+            <button @click="openLogin"
               class="relative overflow-hidden group px-7 py-3 bg-[#00A3C4] text-white font-bold text-[14px] rounded-xl shadow-[0_10px_20px_-5px_rgba(0,163,196,0.3)] hover:shadow-[0_15px_25px_-5px_rgba(0,163,196,0.4)] transition-all duration-300 active:scale-95">
-              <span class="relative z-10">Qeydiyyat</span>
-              <div
-                class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-              </div>
-            </router-link>
+              Daxil ol
+            </button>
+            <button @click="openRegister"
+              class="relative overflow-hidden group px-7 py-3 bg-[#00A3C4] text-white font-bold text-[14px] rounded-xl shadow-[0_10px_20px_-5px_rgba(0,163,196,0.3)] hover:shadow-[0_15px_25px_-5px_rgba(0,163,196,0.4)] transition-all duration-300 active:scale-95">
+              Qeydiyyat
+            </button>
           </div> -->
+
         </nav>
-        <div class="lg:hidden flex items-center relative z-[110]"> <button @click="toggleMobileMenu"
+        <!-- <AuthModal :isOpen="showAuth" :initialTab="initialTab" @close="showAuth = false" /> -->
+
+
+        <div class="lg:hidden flex items-center relative z-1100"> <button @click="toggleMobileMenu"
             class="w-11 h-11 flex items-center justify-center rounded-xl bg-gray-50 text-[#00A3C4] border border-gray-100 active:scale-90 transition-all">
             <i :class="isMobileMenuOpen ? 'fas fa-times' : 'fas fa-bars-staggered'" class="text-xl"></i>
           </button>
@@ -135,24 +136,18 @@
               :class="activeSection === item.path ? 'text-[#00A3C4]' : 'text-gray-800 hover:bg-gray-50 hover:text-[#00A3C4]'">
               {{ item.name }}
             </a>
-
-            <!-- <a v-for="item in menuItems" :key="item.name" @click.prevent="scrollToSection(item.path)"
-              class="text-xl font-bold p-4 rounded-2xl transition-all cursor-pointer " :class="activeSection === item.path
-                ? 'text-[#00A3C4] '
-                : 'text-gray-800 hover:bg-gray-50 hover:text-[#00A3C4]'">
-              {{ item.name }}
-            </a> -->
           </div>
           <div class="mt-auto pb-10">
             <!-- <div class="grid grid-cols-2 gap-4 mb-8">
-              <router-link to="/login" @click="isMobileMenuOpen = false"
-                class="flex items-center justify-center py-4 text-gray-500 font-bold rounded-2xl border-2 border-gray-100">
+              <button @click="() => { isMobileMenuOpen = false; openLogin(); }"
+                class="flex items-center justify-center py-4 text-gray-500 font-bold rounded-2xl border-2 border-gray-100 transition-colors hover:bg-gray-50">
                 Daxil ol
-              </router-link>
-              <router-link to="/register" @click="isMobileMenuOpen = false"
-                class="flex items-center justify-center py-4 bg-[#00A3C4] text-white font-bold rounded-2xl shadow-lg shadow-cyan-100">
+              </button>
+
+              <button @click="() => { isMobileMenuOpen = false; openRegister(); }"
+                class="flex items-center justify-center py-4 bg-[#00A3C4] text-white font-bold rounded-2xl shadow-lg shadow-cyan-100 transition-all hover:bg-[#008ba8]">
                 Qeydiyyat
-              </router-link>
+              </button>
             </div> -->
             <div class="flex items-center justify-between p-4 bg-gray-50 rounded-2xl">
               <div class="flex space-x-3">
@@ -181,7 +176,20 @@ import { throttle } from 'lodash';
 
 const route = useRoute();
 const activeSection = ref('');
+import AuthModal from '../../components/home/AuthModal.vue'
 
+const showAuth = ref(false)
+const initialTab = ref('login')
+
+const openLogin = () => {
+  initialTab.value = 'login'
+  showAuth.value = true
+}
+
+const openRegister = () => {
+  initialTab.value = 'register'
+  showAuth.value = true
+}
 const throttledScroll = throttle(() => {
   handleScroll();
 }, 100);
@@ -222,7 +230,7 @@ onUnmounted(() => window.removeEventListener('scroll', throttledScroll));
 // };
 
 const handleScroll = () => {
-  if (isMobileMenuOpen.value) return; // mobil menyuda scroll ignore edilir
+  if (isMobileMenuOpen.value) return;
 
   const scrollPosition = window.scrollY + 150;
 
@@ -280,9 +288,8 @@ const languages = {
 };
 
 const mobileScrollTo = (id) => {
-  isMobileMenuOpen.value = false; // Menyunu bağla
-  
-  // Bir az gecikmə qoyuruq ki, menyu bağlanma animasiyası ilə skrol toqquşmasın
+  isMobileMenuOpen.value = false;
+
   setTimeout(() => {
     const element = document.querySelector(id);
     if (element) {
@@ -357,9 +364,6 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll);
 });
-
-
-
 
 const activeIdx = ref(-1);
 const indicatorLeft = ref(0);
