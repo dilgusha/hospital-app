@@ -104,10 +104,10 @@
                     class="relative px-2"
                     :class="movingDirection === 'left' ? '' : 'scale-x-[-1]'"
                   >
-                    <!-- <i
+                    <i
                       class="fas fa-ambulance text-[#00A3C4] text-2xl drop-shadow-xl filter brightness-110"
-                    ></i> -->
-                    <i class="not-italic text-xl text-[#00A3C4]  drop-shadow-xl filter brightness-110">🚑</i>
+                    ></i>
+                    <!-- <i class="not-italic text-xl text-[#00A3C4]  drop-shadow-xl filter brightness-110">🚑</i> -->
                   </div>
                   <div
                     class="absolute bottom-0 flex space-x-1"
