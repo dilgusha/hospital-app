@@ -104,9 +104,9 @@
                     class="relative px-2"
                     :class="movingDirection === 'right' ? '' : 'scale-x-[-1]'"
                   >
-                    <!-- <i
+                    <i
                       class="fas fa-ambulance text-[#00A3C4] text-2xl drop-shadow-xl filter brightness-110"
-                    ></i> -->
+                    ></i>
                     
                   </div>
                   <div
