@@ -5,6 +5,7 @@ import Header from '@/components/layout/Header.vue';
 import ScrollToTop from '@/components/common/ScrollToTop.vue';
 import FloatingPhone from '@/components/common/FloatingPhone.vue';
 import { ref } from 'vue';
+// import MobileNav from './components/common/MobileNav.vue';
 const scrollVisible = ref(false)
 
 </script>
@@ -15,6 +16,7 @@ const scrollVisible = ref(false)
   <RouterView />
 
   <Footer />
+  <!-- <MobileNav /> -->
   <FloatingPhone :scroll-visible="scrollVisible" />
   <ScrollToTop @visible-change="scrollVisible = $event" />
 </template>

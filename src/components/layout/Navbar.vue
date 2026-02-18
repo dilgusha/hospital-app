@@ -104,10 +104,11 @@
                     class="relative px-2"
                     :class="movingDirection === 'right' ? '' : 'scale-x-[-1]'"
                   >
-                    <i
+                    <!-- <i
                       class="fas fa-ambulance text-[#00A3C4] text-2xl drop-shadow-xl filter brightness-110"
-                    ></i>
-                    
+                    ></i> -->
+                    <!-- <img :src="svgIcons.ambulanceSvg" alt="" class="w-8 h-8 object-contain"> -->
+                    <div class="w-10 h-10" v-html="svgIcons.ambulanceSvg"></div>
                   </div>
                   <div
                     class="absolute bottom-0 flex space-x-1"
@@ -299,6 +300,7 @@ import { throttle } from "lodash";
 const route = useRoute();
 const activeSection = ref("");
 import AuthModal from "../../components/home/AuthModal.vue";
+import { svgIcons } from "@/assets/images/svg";
 
 const showAuth = ref(false);
 const initialTab = ref("login");
