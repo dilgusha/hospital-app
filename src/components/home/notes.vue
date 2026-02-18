@@ -21,3 +21,8 @@ herfler diqqet
 navbar masinda problem var 
 
 -->
+
+
+<!-- responsivlik doctors + ,servicesSection+
+ digerlerini duzelt 
+d-->

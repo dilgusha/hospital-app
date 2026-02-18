@@ -1,31 +1,49 @@
 <template>
   <div
-    class="top-header bg-[#00A3C4]/95 backdrop-blur-md text-white py-2 sticky top-0 z-130 shadow-lg border-b border-white/10 overflow-hidden">
+    class="top-header bg-[#00A3C4]/95 backdrop-blur-md text-white py-2 sticky top-0 z-130 shadow-lg border-b border-white/10 overflow-hidden"
+  >
+    <!-- <div
+      class="mx-auto w-full max-w-[1440px] px-6 md:px-12 lg:px-16 xl:px-20 h-full flex items-center justify-between"
+    > -->
     <div
-      class="absolute inset-0 bg-linear-to-r from-transparent via-white/5 to-transparent -translate-x-full animate-shimmer">
-    </div>
+      class="absolute inset-0 bg-linear-to-r from-transparent via-white/5 to-transparent -translate-x-full animate-shimmer"
+    ></div>
 
-    <div class="container mx-auto px-4 flex justify-between items-center relative z-10">
-
+    <div
+      class="mx-auto w-full max-w-[1440px] px-6 md:px-12 lg:px-16 xl:px-20 flex items-center justify-between relative z-10"
+    >
       <div class="flex items-center space-x-3 md:space-x-8">
-        <a href="tel:*0003" class="group flex items-center space-x-3 cursor-pointer outline-none">
+        <a
+          href="tel:*0003"
+          class="group flex items-center space-x-3 cursor-pointer outline-none"
+        >
           <div class="relative">
             <div
-              class="bg-white text-[#00A3C4] w-9 h-9 md:w-10 md:h-10 rounded-xl flex items-center justify-center shadow-[0_0_15px_rgba(255,255,255,0.3)] group-hover:shadow-[0_0_20px_rgba(255,255,255,0.5)] group-hover:scale-105 transition-all duration-300">
-              <i class="fas fa-phone-alt text-sm md:text-base animate-phone-ring"></i>
+              class="bg-white text-[#00A3C4] w-9 h-9 md:w-10 md:h-10 rounded-xl flex items-center justify-center shadow-[0_0_15px_rgba(255,255,255,0.3)] group-hover:shadow-[0_0_20px_rgba(255,255,255,0.5)] group-hover:scale-105 transition-all duration-300"
+            >
+              <i
+                class="fas fa-phone-alt text-sm md:text-base animate-phone-ring"
+              ></i>
             </div>
             <span class="absolute -top-1 -right-1 flex h-3 w-3">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+              <span
+                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"
+              ></span>
+              <span
+                class="relative inline-flex rounded-full h-3 w-3 bg-green-500"
+              ></span>
             </span>
           </div>
           <span
-            class="text-xl md:text-2xl font-black tracking-tight text-white drop-shadow-md group-hover:text-cyan-50 transition-colors">
+            class="text-xl md:text-2xl font-black tracking-tight text-white drop-shadow-md group-hover:text-cyan-50 transition-colors"
+          >
             *0003
           </span>
         </a>
 
-        <div class="h-6 w-px bg-linear-to-b from-transparent via-white/20 to-transparent hidden sm:block"></div>
+        <div
+          class="h-6 w-px bg-linear-to-b from-transparent via-white/20 to-transparent hidden sm:block"
+        ></div>
 
         <!-- <div class="hidden sm:flex items-center space-x-6">
           <a href="https://wa.me/994517290003" target="_blank" 
@@ -45,33 +63,44 @@
           </a>
         </div> -->
         <div class="hidden sm:flex items-center space-x-8">
-          <a href="https://wa.me/994517290003" target="_blank"
-            class="flex items-center space-x-3 group relative transition-all duration-300">
+          <a
+            href="https://wa.me/994517290003"
+            target="_blank"
+            class="flex items-center space-x-3 group relative transition-all duration-300"
+          >
             <div class="relative">
               <div
-                class="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center group-hover:bg-green-500 group-hover:shadow-[0_0_15px_rgba(34,197,94,0.6)] transition-all duration-500">
+                class="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center group-hover:bg-green-500 group-hover:shadow-[0_0_15px_rgba(34,197,94,0.6)] transition-all duration-500"
+              >
                 <i
-                  class="fab fa-whatsapp text-lg text-white group-hover:scale-125 transition-transform duration-300"></i>
+                  class="fab fa-whatsapp text-lg text-white group-hover:scale-125 transition-transform duration-300"
+                ></i>
               </div>
             </div>
             <div class="flex flex-col">
               <span
-                class="text-[14px] font-bold tracking-tight text-white group-hover:translate-x-1 transition-transform duration-300">
+                class="text-[14px] font-bold tracking-tight text-white group-hover:translate-x-1 transition-transform duration-300"
+              >
                 +99451 729 00 03
               </span>
             </div>
           </a>
 
-          <a href="mailto:info@rmg.az"
-            class="hidden lg:flex items-center space-x-3 group relative transition-all duration-300">
+          <a
+            href="mailto:info@rmg.az"
+            class="hidden lg:flex items-center space-x-3 group relative transition-all duration-300"
+          >
             <div
-              class="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center group-hover:bg-white transition-all duration-500 shadow-inner">
+              class="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center group-hover:bg-white transition-all duration-500 shadow-inner"
+            >
               <i
-                class="far fa-envelope text-base text-white group-hover:text-[#00A3C4] transition-all duration-300"></i>
+                class="far fa-envelope text-base text-white group-hover:text-[#00A3C4] transition-all duration-300"
+              ></i>
             </div>
             <div class="flex flex-col">
               <span
-                class="text-[14px] font-bold tracking-tight text-white group-hover:translate-x-1 transition-transform duration-300">
+                class="text-[14px] font-bold tracking-tight text-white group-hover:translate-x-1 transition-transform duration-300"
+              >
                 info@rmg.az
               </span>
             </div>
@@ -80,12 +109,28 @@
       </div>
 
       <div class="flex items-center space-x-4">
-        <span class="text-[10px]  tracking-[0.2em] opacity-50 hidden xl:block font-bold">{{ azUpper("Sosial Şəbəkələr") }}</span>
- 
-        <div class="flex items-center bg-white/10 p-1 rounded-xl border border-white/5">
-          <a v-for="(icon, index) in ['facebook-f', 'instagram', 'telegram-plane']" :key="index" href="#"
-            class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-white hover:text-[#00A3C4] transition-all duration-300 group">
-            <i :class="'fab fa-' + icon" class="text-xs group-hover:scale-110"></i>
+        <span
+          class="text-[10px] tracking-[0.2em] opacity-50 hidden xl:block font-bold"
+          >{{ azUpper("Sosial Şəbəkələr") }}</span
+        >
+
+        <div
+          class="flex items-center bg-white/10 p-1 rounded-xl border border-white/5"
+        >
+          <a
+            v-for="(icon, index) in [
+              'facebook-f',
+              'instagram',
+              'telegram-plane',
+            ]"
+            :key="index"
+            href="#"
+            class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-white hover:text-[#00A3C4] transition-all duration-300 group"
+          >
+            <i
+              :class="'fab fa-' + icon"
+              class="text-xs group-hover:scale-110"
+            ></i>
           </a>
         </div>
       </div>
@@ -109,8 +154,7 @@
   </a> -->
 </template>
 <script setup>
-import azUpper from '../../utils/font.js';
-
+import azUpper from "../../utils/font.js";
 </script>
 
 <style scoped>
@@ -125,7 +169,6 @@ import azUpper from '../../utils/font.js';
 }
 
 @keyframes shake {
-
   0%,
   100% {
     transform: rotate(0deg);
@@ -153,7 +196,6 @@ import azUpper from '../../utils/font.js';
 }
 
 @keyframes phone-ring {
-
   0%,
   100% {
     transform: scale(1);
