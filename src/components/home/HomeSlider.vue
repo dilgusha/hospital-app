@@ -54,7 +54,7 @@ const getImageUrl = (name) => {
             class="relative z-10 mx-auto w-full max-w-[1440px] px-6 md:px-12 lg:px-16 xl:px-20 h-full flex items-center"
           >
             <div
-              class="container mx-auto px-4 h-full flex items-center relative z-10"
+              class="container mx-auto h-full flex items-center relative z-10"
             >
               <div class="max-w-3xl space-y-4 md:space-y-6">
                 <span
