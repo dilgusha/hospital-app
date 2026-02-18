@@ -1,4 +1,4 @@
-<script setup>
+<!-- <script setup>
 import { ref, onMounted, onUnmounted, watch } from 'vue'
 
 const emit = defineEmits(['visible-change'])
@@ -49,4 +49,56 @@ onUnmounted(() => {
   opacity: 0;
   transform: translateY(20px);
 }
-</style>
+</style> -->
+
+<script setup>
+import { ref, onMounted, onUnmounted, watch, computed } from 'vue'
+
+const emit = defineEmits(['visible-change'])
+const isVisible = ref(false)
+const isMobile = ref(false)
+
+const checkMobile = () => {
+  isMobile.value = window.innerWidth < 1024
+}
+
+const checkScroll = () => {
+  isVisible.value = window.scrollY > 400
+}
+
+const bottomClass = computed(() => {
+  return isMobile.value ? 'bottom-28' : 'bottom-8'
+})
+
+watch(isVisible, (val) => {
+  emit('visible-change', val)
+})
+
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+}
+
+onMounted(() => {
+  checkMobile()
+  window.addEventListener('scroll', checkScroll)
+  window.addEventListener('resize', checkMobile)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', checkScroll)
+  window.removeEventListener('resize', checkMobile)
+})
+</script>
+
+<template>
+  <Transition name="fade">
+    <button v-if="isVisible" @click="scrollToTop"
+      :class="[
+        'fixed right-8 z-50 w-14 h-14 p-4 bg-[#00A3C4] text-white rounded-full shadow-2xl hover:bg-[#008ba8] transition-all hover:-translate-y-1 active:scale-95 group',
+        bottomClass
+      ]"
+      aria-label="Scroll to top">
+      <i class="fas fa-arrow-up text-lg group-hover:animate-bounce"></i>
+    </button>
+  </Transition>
+</template>

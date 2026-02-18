@@ -91,7 +91,7 @@
                     ></div>
                   </div>
                   <div
-                    class="absolute -top-4 left-1/2 -translate-x-1/2 flex space-x-1.5 z-10"
+                    class="absolute -top-1 left-1/2 -translate-x-1/2 flex space-x-1.5 z-50"
                   >
                     <div
                       class="w-1.5 h-1.5 bg-red-500 rounded-full animate-siren shadow-[0_0_12px_rgba(239,68,68,0.9)]"

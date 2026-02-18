@@ -5,7 +5,7 @@ import Navbar from "@/components/layout/Navbar.vue";
 
 <template>
   <header class="sticky top-0 z-[100] w-full bg-white shadow-sm">
-    <TopHeader />
+    <!-- <TopHeader /> -->
     <Navbar />
   </header>
 </template>
