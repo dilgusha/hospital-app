@@ -16,5 +16,15 @@ export const servicesList = [
     title: 'Hava Təxliyəsi',
     description: 'Xüsusi təchiz olunmuş təyyarə və helikopterlərlə həm ölkə daxili, həm də ölkə xaricinə...',
     icon: svgIcons.ambulance
+  },
+  {
+    title: 'Hava Təxliyəsi',
+    description: 'Xüsusi təchiz olunmuş təyyarə və helikopterlərlə həm ölkə daxili, həm də ölkə xaricinə...',
+    icon: svgIcons.ambulance
+  },
+  {
+    title: 'Hava Təxliyəsi',
+    description: 'Xüsusi təchiz olunmuş təyyarə və helikopterlərlə həm ölkə daxili, həm də ölkə xaricinə...',
+    icon: svgIcons.ambulance
   }
 ];

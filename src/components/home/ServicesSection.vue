@@ -1,8 +1,6 @@
  <template>
   <div class="bg-white overflow-hidden">
-    <div
-      class="mx-auto w-full max-w-[1440px] px-6 md:px-12 lg:px-16 xl:px-20"
-    >
+    <div class="mx-auto w-full px-6 md:px-12 lg:px-16 xl:px-20">
       <section class="py-12 md:py-24" id="services">
         <div class="space-y-24 md:space-y-32">
           <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-20">
@@ -13,7 +11,7 @@
                                 class="w-full h-[400px] object-cover" />
                         </div>
                     </div> -->
-             <div class="w-full lg:w-1/2">
+            <div class="w-full lg:w-1/2">
               <div
                 class="rounded-[5px] overflow-hidden shadow-2xl relative group"
               >
@@ -51,7 +49,7 @@
                                 class="w-full h-[400px] object-cover" />
                         </div>
                     </div> -->
-             <div class="w-full lg:w-1/2">
+            <div class="w-full lg:w-1/2">
               <div
                 class="rounded-[5px] overflow-hidden shadow-2xl relative group"
               >
@@ -85,141 +83,136 @@
           </div>
         </div>
         <div class="py-20 space-y-32">
-          <section class="container mx-auto px-4" id="about">
-            <div class="flex flex-col lg:flex-row items-center gap-16">
+          <div class="flex flex-col lg:flex-row items-center gap-16">
+            <div
+              class="w-full lg:w-1/2 relative h-[400px] md:h-[550px] mb-10 lg:mb-0"
+            >
               <div
-                class="w-full lg:w-1/2 relative h-[400px] md:h-[550px] mb-10 lg:mb-0"
+                class="absolute top-0 left-0 w-[65%] h-[75%] rounded-[12px] overflow-hidden shadow-2xl z-20 border-4 border-white transition-transform hover:z-30 hover:scale-[1.03] duration-300"
               >
-                <div
-                  class="absolute top-0 left-0 w-[65%] h-[75%] rounded-[12px] overflow-hidden shadow-2xl z-20 border-4 border-white transition-transform hover:z-30 hover:scale-[1.03] duration-300"
-                >
-                  <img
-                    src="../../assets/images/Union1.jpg"
-                    class="w-full h-full object-cover"
-                    alt="Tibbi müdaxilə"
-                  />
-                </div>
-                <div
-                  class="absolute bottom-0 right-0 w-[65%] h-[75%] rounded-[12px] overflow-hidden shadow-2xl z-10 border-4 border-white transition-transform hover:z-30 hover:scale-[1.03] duration-300"
-                >
-                  <img
-                    src="../../assets/images/union2.jpg"
-                    class="w-full h-full object-cover"
-                    alt="Ambulans daxili"
-                  />
-                </div>
+                <img
+                  src="../../assets/images/Union1.jpg"
+                  class="w-full h-full object-cover"
+                  alt="Tibbi müdaxilə"
+                />
               </div>
-              <div class="w-full lg:w-1/2 space-y-6">
-                <div>
-                  <span
-                    class="text-[#00A3C4] font-medium tracking-widest uppercase text-sm"
-                  >
-                    {{ azUpper("niyə") }}</span
-                  >
-                  <h2 class="text-4xl font-extrabold text-[#2d3142] mt-2">
-                    Referans Ambulans ?
-                  </h2>
-                  <div class="h-1 w-20 bg-[#00A3C4] mt-4 rounded-full"></div>
-                </div>
-                <p class="text-gray-600 text-lg leading-relaxed">
-                  Referans Ambulans Azərbaycanın ilk özəl Təcili Tibbi Yardım
-                  xidmətidir. Təcrübəli və dinamik tibbi heyətlə əhaliyə 24 saat
-                  yüksək xidmət göstərir.
-                </p>
-                <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
-                  <li
-                    v-for="item in advantages"
-                    :key="item"
-                    class="flex items-center gap-3 group"
-                  >
-                    <div
-                      class="flex-shrink-0 w-6 h-6 rounded-full bg-cyan-50 border border-cyan-200 flex items-center justify-center group-hover:bg-[#00A3C4] transition-colors duration-300"
-                    >
-                      <i
-                        class="fas fa-check text-[#00A3C4] text-[10px] group-hover:text-white"
-                      ></i>
-                    </div>
-                    <span class="text-gray-700 font-medium">{{ item }}</span>
-                  </li>
-                </ul>
+              <div
+                class="absolute bottom-0 right-0 w-[65%] h-[75%] rounded-[12px] overflow-hidden shadow-2xl z-10 border-4 border-white transition-transform hover:z-30 hover:scale-[1.03] duration-300"
+              >
+                <img
+                  src="../../assets/images/union2.jpg"
+                  class="w-full h-full object-cover"
+                  alt="Ambulans daxili"
+                />
               </div>
             </div>
-          </section>
-
-          <section class="container mx-auto">
-            <div class="flex flex-col lg:flex-row-reverse items-center gap-16">
-              <div class="w-full lg:w-1/2">
-                <div
-                  class="rounded-[5px] overflow-hidden shadow-2xl relative group"
+            <div class="w-full lg:w-1/2 space-y-6">
+              <div>
+                <span
+                  class="text-[#00A3C4] font-medium tracking-widest uppercase text-sm"
                 >
-                  <img
-                    src="../../assets/images/ambulance.jpg"
-                    class="w-full h-[450px] object-cover transition-transform duration-700 group-hover:scale-105"
-                    alt="Ambulans parkı"
-                  />
+                  {{ azUpper("niyə") }}</span
+                >
+                <h2 class="text-4xl font-extrabold text-[#2d3142] mt-2">
+                  Referans Ambulans ?
+                </h2>
+                <div class="h-1 w-20 bg-[#00A3C4] mt-4 rounded-full"></div>
+              </div>
+              <p class="text-gray-600 text-lg leading-relaxed">
+                Referans Ambulans Azərbaycanın ilk özəl Təcili Tibbi Yardım
+                xidmətidir. Təcrübəli və dinamik tibbi heyətlə əhaliyə 24 saat
+                yüksək xidmət göstərir.
+              </p>
+              <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
+                <li
+                  v-for="item in advantages"
+                  :key="item"
+                  class="flex items-center gap-3 group"
+                >
                   <div
-                    class="absolute inset-0 bg-gradient-to-t from-[#00A3C4]/20 to-transparent"
-                  ></div>
-                </div>
-              </div>
-              <div class="w-full lg:w-1/2 space-y-8">
-                <div>
-                  <h2 class="text-4xl font-extrabold text-[#2d3142]">
-                    Təcili Tibbi Yardıma ehtiyacınız var?
-                  </h2>
-                  <div class="h-1 w-24 bg-[#00A3C4] mt-4 rounded-full"></div>
-                </div>
-                <p class="text-gray-600 text-lg">
-                  Göstərilən xidmətlər haqqında sualınız var? O zaman *0003
-                  Çağrı Mərkəzinə zəng edə bilərsiniz. Sizin çağırışınızı təmin
-                  etmək üçün əməkdaşlarımız 7/24 xidmətinizdədir.
-                </p>
-
-                <div class="flex flex-col gap-3 mt-6">
-                  <a href="tel:*0003" class="flex items-center gap-4 group">
-                    <div
-                      class="w-12 h-12 flex items-center justify-center rounded-full bg-gray-100 text-[#00A3C4] group-hover:bg-[#00A3C4] group-hover:text-white transition-all duration-300"
-                    >
-                      <i class="fas fa-phone-alt"></i>
-                    </div>
-                    <div class="flex flex-col">
-                      <span
-                        class="text-[10px] uppercase tracking-widest text-gray-400 font-bold"
-                        >{{ azUpper("Çağrı Mərkəzi") }}</span
-                      >
-                      <span
-                        class="text-xl font-bold text-[#2d3142] group-hover:text-[#00A3C4] transition-colors leading-tight"
-                        >*0003</span
-                      >
-                    </div>
-                  </a>
-
-                  <div class="w-16 h-[1px] bg-gray-200 ml-14"></div>
-
-                  <a
-                    href="https://wa.me/994517290003"
-                    class="flex items-center gap-4 group"
+                    class="flex-shrink-0 w-6 h-6 rounded-full bg-cyan-50 border border-cyan-200 flex items-center justify-center group-hover:bg-[#00A3C4] transition-colors duration-300"
                   >
-                    <div
-                      class="w-12 h-12 flex items-center justify-center rounded-full bg-gray-100 text-green-500 group-hover:bg-green-500 group-hover:text-white transition-all duration-300"
-                    >
-                      <i class="fab fa-whatsapp text-xl"></i>
-                    </div>
-                    <div class="flex flex-col">
-                      <span
-                        class="text-[10px] uppercase tracking-widest text-gray-400 font-bold"
-                        >{{ azUpper("WhatsApp Xətti") }}</span
-                      >
-                      <span
-                        class="text-xl font-bold text-[#2d3142] group-hover:text-green-500 transition-colors leading-tight"
-                        >+994 51 729 00 03</span
-                      >
-                    </div>
-                  </a>
-                </div>
+                    <i
+                      class="fas fa-check text-[#00A3C4] text-[10px] group-hover:text-white"
+                    ></i>
+                  </div>
+                  <span class="text-gray-700 font-medium">{{ item }}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="flex flex-col lg:flex-row-reverse items-center gap-16">
+            <div class="w-full lg:w-1/2">
+              <div
+                class="rounded-[5px] overflow-hidden shadow-2xl relative group"
+              >
+                <img
+                  src="../../assets/images/ambulance.jpg"
+                  class="w-full h-[450px] object-cover transition-transform duration-700 group-hover:scale-105"
+                  alt="Ambulans parkı"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-[#00A3C4]/20 to-transparent"
+                ></div>
               </div>
             </div>
-          </section>
+            <div class="w-full lg:w-1/2 space-y-8">
+              <div>
+                <h2 class="text-4xl font-extrabold text-[#2d3142]">
+                  Təcili Tibbi Yardıma ehtiyacınız var?
+                </h2>
+                <div class="h-1 w-24 bg-[#00A3C4] mt-4 rounded-full"></div>
+              </div>
+              <p class="text-gray-600 text-lg">
+                Göstərilən xidmətlər haqqında sualınız var? O zaman *0003 Çağrı
+                Mərkəzinə zəng edə bilərsiniz. Sizin çağırışınızı təmin etmək
+                üçün əməkdaşlarımız 7/24 xidmətinizdədir.
+              </p>
+
+              <div class="flex flex-col gap-3 mt-6">
+                <a href="tel:*0003" class="flex items-center gap-4 group">
+                  <div
+                    class="w-12 h-12 flex items-center justify-center rounded-full bg-gray-100 text-[#00A3C4] group-hover:bg-[#00A3C4] group-hover:text-white transition-all duration-300"
+                  >
+                    <i class="fas fa-phone-alt"></i>
+                  </div>
+                  <div class="flex flex-col">
+                    <span
+                      class="text-[10px] uppercase tracking-widest text-gray-400 font-bold"
+                      >{{ azUpper("Çağrı Mərkəzi") }}</span
+                    >
+                    <span
+                      class="text-xl font-bold text-[#2d3142] group-hover:text-[#00A3C4] transition-colors leading-tight"
+                      >*0003</span
+                    >
+                  </div>
+                </a>
+
+                <div class="w-16 h-[1px] bg-gray-200 ml-14"></div>
+
+                <a
+                  href="https://wa.me/994517290003"
+                  class="flex items-center gap-4 group"
+                >
+                  <div
+                    class="w-12 h-12 flex items-center justify-center rounded-full bg-gray-100 text-green-500 group-hover:bg-green-500 group-hover:text-white transition-all duration-300"
+                  >
+                    <i class="fab fa-whatsapp text-xl"></i>
+                  </div>
+                  <div class="flex flex-col">
+                    <span
+                      class="text-[10px] uppercase tracking-widest text-gray-400 font-bold"
+                      >{{ azUpper("WhatsApp Xətti") }}</span
+                    >
+                    <span
+                      class="text-xl font-bold text-[#2d3142] group-hover:text-green-500 transition-colors leading-tight"
+                      >+994 51 729 00 03</span
+                    >
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>

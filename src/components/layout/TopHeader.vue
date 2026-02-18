@@ -10,7 +10,7 @@
     ></div>
 
     <div
-      class="mx-auto w-full max-w-[1440px] px-6 md:px-12 lg:px-16 xl:px-20 flex items-center justify-between relative z-10"
+      class="mx-auto w-full px-6 md:px-12 lg:px-16 xl:px-20 flex items-center justify-between relative z-10"
     >
       <div class="flex items-center space-x-3 md:space-x-8">
         <a

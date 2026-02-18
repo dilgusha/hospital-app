@@ -1,6 +1,6 @@
 <template>
   <section class="py-20 bg-[#F9F9F9]">
-    <div class="container mx-auto px-4 text-center">
+    <div class="mx-auto px-4 text-center">
       <div class="max-w-3xl mx-auto mb-8">
         <h2 class="text-3xl md:text-5xl font-black text-[#2d3142] mb-6 leading-tight">
           #Həyat qurtarmaq üçün<br>

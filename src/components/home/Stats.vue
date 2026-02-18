@@ -5,7 +5,7 @@
     id="stats"
   >
     <div
-      class="mx-auto w-full max-w-[1440px] px-6 md:px-12 lg:px-16 xl:px-20"
+      class="mx-auto w-full px-6 md:px-12 lg:px-16 xl:px-20"
     >
       <div
         class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-8 text-center"

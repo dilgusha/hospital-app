@@ -1,6 +1,6 @@
 <template>
   <section id="reviews" class="py-20 md:py-28 bg-gray-50 overflow-hidden">
-    <div class="mx-auto w-full max-w-[1440px] px-6 md:px-12 lg:px-16 xl:px-20">
+    <div class="mx-auto w-full px-6 md:px-12 lg:px-16 xl:px-20">
       <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-6">
         <div>
           <h2 class="text-3xl md:text-4xl font-black text-[#2d3142] relative mb-4">

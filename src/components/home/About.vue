@@ -1,6 +1,6 @@
 <template>
   <section class="py-16 md:py-24 bg-[#f8f9fa] overflow-hidden" id="about">
-    <div class="mx-auto w-full max-w-[1440px] px-6 md:px-12 lg:px-16 xl:px-20">
+    <div class="mx-auto w-full  px-6 md:px-12 lg:px-16 xl:px-20">
       <div
         class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16 xl:gap-24"
       >

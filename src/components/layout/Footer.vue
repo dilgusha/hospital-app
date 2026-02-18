@@ -2,7 +2,7 @@
   <footer class="bg-[#00A3C4] text-white pt-16 pb-8 relative overflow-hidden">
     <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl">
     </div>
-    <div class="mx-auto w-full max-w-[1440px] px-6 md:px-12 lg:px-16 xl:px-20 relative z-10">
+    <div class="mx-auto w-full px-6 md:px-12 lg:px-16 xl:px-20 relative z-10">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 items-start">
 
         <div class="lg:col-span-4 space-y-8 bg-[#00A3C4]">

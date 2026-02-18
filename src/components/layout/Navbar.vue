@@ -1,7 +1,7 @@
   <template>
   <div class="sticky top-0 z-100 transition-all duration-500 bg-white">
     <div
-      class="mx-auto w-full max-w-[1440px] px-6 md:px-12 lg:px-16 xl:px-20 h-20 md:h-24 flex items-center justify-between"
+      class="mx-auto w-full px-6 md:px-12 lg:px-16 xl:px-20 h-20 md:h-24 flex items-center justify-between"
     >
       <!-- <div class=" sticky top-0 z-100 transition-all duration-500 bg-white"> -->
       <!-- <div

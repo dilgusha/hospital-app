@@ -3,7 +3,7 @@
     id="services"
     class="py-20 md:py-28 bg-[#f8fafc] overflow-hidden scroll-mt-24"
   >
-    <div class="mx-auto w-full max-w-[1440px] px-6 md:px-12 lg:px-16 xl:px-20">
+    <div class="mx-auto w-full px-6 md:px-12 lg:px-16 xl:px-20">
       <div class="relative mb-12">
         <h2 class="text-3xl md:text-4xl font-black text-[#2d3142]">
           Xidmətlərimiz
@@ -22,8 +22,9 @@
           :pagination="{ clickable: true, el: '.custom-pagination' }"
           :navigation="{ nextEl: '.next-btn', prevEl: '.prev-btn' }"
           :breakpoints="{
+            '320': { slidesPerView: 1.1, spaceBetween: 20 },
             '768': { slidesPerView: 2, spaceBetween: 30 },
-            '1280': { slidesPerView: 2, spaceBetween: 40 },
+            '1536': { slidesPerView: 3, spaceBetween: 40 },
           }"
           class="services-swiper"
         >
@@ -39,7 +40,6 @@
                 <div
                   class="w-16 h-16 rounded-2xl bg-[#00A3C4]/10 flex items-center justify-center transition-transform duration-500 group-hover/card:rotate-6"
                 >
-                  <!-- <img :src="service.icon" :alt="service.title" class="w-12 h-12 object-contain" /> -->
                   <div
                     v-html="service.icon"
                     class="w-10 h-10 flex items-center justify-center text-[#00A3C4]"

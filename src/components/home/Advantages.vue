@@ -3,7 +3,7 @@
     id="advantages"
     class="py-20 md:py-28 bg-white overflow-hidden scroll-mt-24"
   >
-    <div class="mx-auto w-full max-w-[1440px] px-6 md:px-12 lg:px-16 xl:px-20">
+    <div class="mx-auto w-full px-6 md:px-12 lg:px-16 xl:px-20">
       <div class="relative mb-12 md:mb-16">
         <h2 class="text-3xl md:text-4xl font-black text-[#2d3142]">
           Üstünlüklərimiz
