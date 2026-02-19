@@ -25,4 +25,7 @@ navbar masinda problem var
 
 <!-- responsivlik doctors + ,servicesSection+
  digerlerini duzelt 
+
+
+ mobilenav duzelt
 d-->

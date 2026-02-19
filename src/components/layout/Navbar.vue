@@ -211,13 +211,21 @@
       </nav>
       <!-- <AuthModal :isOpen="showAuth" :initialTab="initialTab" @close="showAuth = false" /> -->
 
-      <div class="lg:hidden flex items-center relative z-1100">
-        <button
+      <div class="lg:hidden flex items-center relative z-2100">
+        <!-- <button
           @click="toggleMobileMenu"
           class="w-11 h-11 flex items-center justify-center rounded-xl bg-gray-50 text-[#00A3C4] border border-gray-100 active:scale-90 transition-all"
         >
           <i
-            :class="isMobileMenuOpen ? 'fas fa-times' : 'fas fa-bars-staggered'"
+            :class="props.isMobileMenuOpen ? 'fas fa-times' : 'fas fa-bars-staggered'"
+            class="text-xl"
+          ></i>
+        </button> -->
+        <button @click="toggleMobileMenu" class="w-11 h-11 flex items-center justify-center rounded-xl bg-gray-50 text-[#00A3C4] border border-gray-100 active:scale-90 transition-all" >
+          <i
+            :class="
+              props.isMobileMenuOpen ? 'fas fa-times' : 'fas fa-bars-staggered'
+            "
             class="text-xl"
           ></i>
         </button>
@@ -226,8 +234,8 @@
 
     <transition name="mobile-menu">
       <div
-        v-if="isMobileMenuOpen"
-        class="fixed inset-0 bg-white z-[1000] lg:hidden flex flex-col pt-24 px-6"
+        v-if="props.isMobileMenuOpen"
+        class="fixed inset-0 bg-white z-[2000] lg:hidden flex flex-col pt-24 px-6"
       >
         <div class="flex flex-col space-y-2">
           <!-- <a v-for="item in menuItems" :key="item.name"
@@ -354,7 +362,7 @@ onUnmounted(() => window.removeEventListener("scroll", throttledScroll));
 // };
 
 const handleScroll = () => {
-  if (isMobileMenuOpen.value) return;
+  if (props.isMobileMenuOpen) return;
 
   const scrollPosition = window.scrollY + 150;
 
@@ -415,8 +423,8 @@ const languages = {
 };
 
 const mobileScrollTo = (id) => {
-  isMobileMenuOpen.value = false;
-
+  // isMobileMenuOpen.value = false;
+  emit("update:isMobileMenuOpen", false);
   setTimeout(() => {
     const element = document.querySelector(id);
     if (element) {
@@ -450,23 +458,35 @@ const scrollToSection = (id, index) => {
 
 const currentLang = ref("AZ");
 const isLangOpen = ref(false);
-const isMobileMenuOpen = ref(false);
+// const isMobileMenuOpen = ref(false);
 const langDropdown = ref(null);
+const props = defineProps({
+  isMobileMenuOpen: Boolean,
+});
+
+const emit = defineEmits(["update:isMobileMenuOpen"]);
 
 const toggleMobileMenu = () => {
-  isMobileMenuOpen.value = !isMobileMenuOpen.value;
+  // isMobileMenuOpen.value = !isMobileMenuOpen.value;
+  emit("update:isMobileMenuOpen", !props.isMobileMenuOpen);
 };
 
+// watch(
+//   () => route.path,
+//   () => {
+//     isMobileMenuOpen.value = false;
+//   }
+// );
 watch(
-  () => route.path,
-  () => {
-    isMobileMenuOpen.value = false;
+  () => props.isMobileMenuOpen,
+  (val) => {
+    document.body.style.overflow = val ? "hidden" : "";
   }
 );
 
-watch(isMobileMenuOpen, (val) => {
-  document.body.style.overflow = val ? "hidden" : "";
-});
+// watch(isMobileMenuOpen, (val) => {
+//   document.body.style.overflow = val ? "hidden" : "";
+// });
 
 const handleClickOutside = (event) => {
   if (langDropdown.value && !langDropdown.value.contains(event.target)) {
