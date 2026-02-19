@@ -30,7 +30,7 @@
         >
       </a>
 
-      <div class="relative flex flex-col items-center -top-6 px-4">
+      <div class="relative flex flex-col items-center px-4">
         <div
           class="absolute w-16 h-16 bg-[#00A3C4]/20 rounded-full blur-xl animate-pulse"
         ></div>
