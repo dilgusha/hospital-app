@@ -221,7 +221,10 @@
             class="text-xl"
           ></i>
         </button> -->
-        <button @click="toggleMobileMenu" class="w-11 h-11 flex items-center justify-center rounded-xl bg-gray-50 text-[#00A3C4] border border-gray-100 active:scale-90 transition-all" >
+        <button
+          @click="toggleMobileMenu"
+          class="w-11 h-11 flex items-center justify-center rounded-xl bg-gray-50 text-[#00A3C4] border border-gray-100 active:scale-90 transition-all"
+        >
           <i
             :class="
               props.isMobileMenuOpen ? 'fas fa-times' : 'fas fa-bars-staggered'
@@ -439,22 +442,46 @@ const mobileScrollTo = (id) => {
     }
   }, 300);
 };
-
 const scrollToSection = (id, index) => {
   if (index !== undefined) {
     setActive(index);
     activeSection.value = menuItems[index].path;
-    if (id !== "#") {
-      const element = document.querySelector(id);
-      if (element) {
-        const offset = 90;
-        window.scrollTo(0, element.offsetTop - offset);
-      }
-    } else {
-      window.scrollTo(0, 0);
+  }
+
+  if (id !== "#") {
+    const element = document.querySelector(id);
+    if (element) {
+      const offset = 90;
+      window.scrollTo({
+        top: element.offsetTop - offset,
+        behavior: "smooth",
+      });
     }
+  } else {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   }
 };
+// const scrollToSection = (id, index) => {
+//   if (index !== undefined) {
+//     setActive(index);
+//     activeSection.value = menuItems[index].path;
+//     if (id !== "#") {
+//       const element = document.querySelector(id);
+//       if (element) {
+//         const offset = 90;
+//         window.scrollTo({
+//           top: element.offsetTop - offset,
+//           behavior: "smooth",
+//         });
+//       }
+//     } else {
+//       window.scrollTo(0, 0);
+//     }
+//   }
+// };
 
 const currentLang = ref("AZ");
 const isLangOpen = ref(false);

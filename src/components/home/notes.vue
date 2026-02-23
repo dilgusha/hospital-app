@@ -28,4 +28,12 @@ navbar masinda problem var
 
 
  mobilenav duzelt
+
+
+
+ 200softu duzelt kkodu al
+
+ logoya basanda yuxari qayitsin
+
+ butun huquqlar qorunur herfleri duzlet
 d-->

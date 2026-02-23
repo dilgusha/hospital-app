@@ -88,7 +88,7 @@
         <div
           class="flex flex-col lg:flex-row justify-center lg:justify-start items-center lg:items-center flex-wrap gap-2 lg:gap-4">
           <p class="text-[13px] opacity-70">
-            “Referans Ambulans” © 2026 Bütün hüquqlar qorunur.
+            “Referans Ambulans” © 2026 Bütün Hüquqlar Qorunur.
           </p>
           <Footer200 />
         </div>
