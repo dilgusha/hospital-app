@@ -1,88 +1,146 @@
-<script setup>
-import { ref, computed } from 'vue';
-
-const currentNumber = ref("200");
-const isAnimating = ref(false);
-const targetNumbers = ["301", "302", "403", "404", "500", "501", "502", "200"];
-
-let shouldStop = false;
-const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-
-const digits = computed(() => currentNumber.value.split(''));
-
-const handleHover = async () => {
-    if (isAnimating.value) return;
-
-    isAnimating.value = true;
-    shouldStop = false;
-
-    for (const target of targetNumbers) {
-        if (shouldStop) break;
-        currentNumber.value = target;
-        await sleep(50);
-    }
-
-    currentNumber.value = "200";
-    isAnimating.value = false;
-};
-
-const handleMouseLeave = () => {
-    shouldStop = true;
-    currentNumber.value = "200";
-    isAnimating.value = false;
-};
-</script>
-
 <template>
-    <a href="https://200soft.com/" target="_blank" rel="noopener noreferrer" class="inline-block">
-        <div class="">
-            <div @mouseenter="handleHover" @mouseleave="handleMouseLeave"
-                class="group relative px-3 py-1 bg-[#F2E8FF] rounded-[6px] flex items-center justify-center cursor-pointer overflow-hidden transition-all duration-300 border border-transparent hover:border-indigo-200">
-                <span class="flex items-center tracking-tight">
-
-                    <span class="flex">
-                        <span v-for="(digit, idx) in digits" :key="idx"
-                            class="inline-block w-[1ch] text-center transition-colors duration-100"
-                            :class="isAnimating ? 'text-green-500' : 'text-[#23272F]'">
-                            {{ digit }}
-                        </span>
-                    </span>
-
-                    <span class="ml-1 transition-colors duration-200"
-                        :class="isAnimating ? 'text-indigo-600' : 'text-[#23272F]'">
-                        Soft
-                    </span>
-
-                </span>
-
-                <div
-                    class="absolute bottom-0 left-0 h-0.5 bg-indigo-500 transition-all duration-500 w-0 group-hover:w-full">
-                </div>
-            </div>
-        </div>
+       <a
+        href="https://200soft.com/"
+        target="_blank"
+        class="cursor-pointer transition-all duration-300 hover:transform hover:scale-105 group"
+        @mouseenter="scramble = true"
+        @mouseleave="scramble = false"
+    >
+        <span class="dynamic-text">
+            <span class="code-block">
+                <TextScramble text="200" :scramble="scramble" />
+                <span class="code-soft">Soft</span>
+            </span>
+            <span class="code-cursor"/>
+        </span>
     </a>
 </template>
 
+<script setup>
+import TextScramble from './TextScramble.vue';
+import { ref } from 'vue'
+
+const scramble = ref(false);
+
+</script>
+
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Tomorrow:wght@600;700&display=swap');
-
-span {
-    user-select: none;
+.code-block {
+    display: inline-flex;
+    gap: 0.5rem;
+    position: relative;
+    padding: 0.2rem 0.5rem;
+    background: linear-gradient(90deg, #f3e8ff 0%, #e0eaff 100%);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
 }
 
-@keyframes pulse {
+.code-line {
+    color: #7c3aed; /* əsas bənövşəyi */
+    position: relative;
+    display: inline-block;
+}
 
-    0%,
+.code-line::before {
+    content: '>';
+    position: absolute;
+    left: -1.2rem;
+    color: #0099ff; /* mavi vurğu */
+    opacity: 0;
+    animation: blink 1s infinite;
+}
+
+.code-soft {
+    color: #23272f; /* tünd göy-bənövşəyi, ağ fonda yaxşı görünür */
+    position: relative;
+    display: inline-block;
+    opacity: 0.92;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.code-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1.2em;
+    background: #0099ff; /* mavi vurğu */
+    margin-left: 0.2rem;
+    animation: cursor-blink 1s infinite;
+    vertical-align: middle;
+}
+
+.code-block::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #7c3aed 30%,
+        #0099ff 70%,
+        transparent
+    );
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.group:hover .code-block::after {
+    transform: scaleX(1);
+}
+.group:hover .code-soft {
+    color: #7c3aed;
+    opacity: 1;
+    transform: translateX(2px);
+}
+.dynamic-text {
+    display: inline-flex;
+    align-items: center;
+    font-family: 'Tomorrow', 'SF Mono', 'Fira Code', monospace;
+    position: relative;
+}
+
+.code-block::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 153, 255, 0.10),
+        transparent
+    );
+    transform: translateX(-100%);
+    animation: scan 3s linear infinite;
+}
+
+@keyframes scan {
+    0% {
+        transform: translateX(-100%);
+    }
     100% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0;
+        transform: translateX(100%);
     }
 }
 
-.animate-pulse {
-    animation: pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+@keyframes cursor-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+.group:hover .code-block::before {
+    animation: scan 1.5s linear infinite;
 }
 </style>
