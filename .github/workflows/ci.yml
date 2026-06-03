@@ -1,43 +1,24 @@
-name: Hospital App CI/CD
+name: Hospital App CI Check
 
 on:
   push:
     branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
 
 jobs:
-  build-and-deploy:
+  ci-build-check:
     runs-on: ubuntu-latest
-
     steps:
-      # 1. Kodu yükləyirik
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2. Node.js quraşdırırıq
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'npm'
 
-      # 3. Paketləri yazırıq
       - name: Install dependencies
         run: npm ci
 
-      # 4. Layihəni Build edirik (dist qovluğu yaranır)
       - name: Build project
         run: npm run build
-
-      # ==========================================
-      # BURASI BİZİM CD (CONTINUOUS DEPLOYMENT) HİSSƏMİZDİR
-      # ==========================================
-      - name: Deploy to Netlify
-        uses: nwtgck/actions-netlify@v3
-        with:
-          publish-dir: './dist' # Build olunmuş frontend fayllarının olduğu qovluq
-          production-deploy: true
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          netlify-site-id: ${{ secrets.NETLIFY_SITE_ID }}
-          netlify-auth-token: ${{ secrets.NETLIFY_AUTH_TOKEN }}
